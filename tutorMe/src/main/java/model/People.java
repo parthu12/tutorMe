@@ -2,6 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+package model;
 
 /**
  *
@@ -12,12 +13,14 @@ public class People {
     private int age;
     private String course;
     private String location;
+    private String description;
     
-    public void People (String name,int age,String location,String course){
+    public void People (String name,int age,String location,String course, String description){
         this.name = name;
         this.age = age;
         this.course = course;
         this.location = location;
+        this.description = description;
     }
     
     public String getName(){
@@ -49,4 +52,11 @@ public class People {
          this.location = location;
     }
     
+    public void setDescription(String description){
+        this.description = description;
+    }
+    
+    public String getDescription(){
+        return this.description;
+    }
 }
