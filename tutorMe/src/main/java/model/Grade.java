@@ -15,6 +15,10 @@ import javax.swing.JFrame;
  */
 public class Grade {
     
+    /*
+    hello
+    */
+    
     public static void main(String args[]) {
         JFrame frame = new JFrame();
         frame.add(new GradePanel());
