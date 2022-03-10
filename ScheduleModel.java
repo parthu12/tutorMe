@@ -8,61 +8,45 @@ import java.util.Date;
  *
  * @author Jia
  * time will use getTime() method to get the time from the system clock
- * place will be pre-registered
+ * place, university, meetingPlace, and studeSubject will be passed in as parameter
  */
 public class ScheduleModel {
-    private long time;
-    private String place;
-    private String University;
-    private String meetingPlace;
-    private String studySubject;
-    
-    ScheduleModel(String p, String U, String m, String s){
-        //To convert time into readable time, use the following code
-        /*
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss z");
-        Date date = new Date(time);
-        System.out.println(formatter.format(date));
-        */
-        time = System.currentTimeMillis();
-        place = p;
-        University = U;
-        meetingPlace = m;
-        studySubject = s;
+    private Time time;
+    private Subject subject;
+    private Place place;
+    private University university;
+    ScheduleModel(long t, String s, String p, String u){
+        time = new Time(t);
+        subject = new Subject(s);
+        place = new Place(p);
+        university = new University(u);
     }
 
     /**
      * @return the time
      */
-    public long getTime() {
+    public Time getTime() {
         return time;
     }
 
     /**
      * @return the place
      */
-    public String getPlace() {
+    public Place getPlace() {
         return place;
     }
 
     /**
      * @return the University
      */
-    public String getUniversity() {
-        return University;
-    }
-
-    /**
-     * @return the meetingPlace
-     */
-    public String getMeetingPlace() {
-        return meetingPlace;
+    public University getUniversity() {
+        return university;
     }
 
     /**
      * @return the studySubject
      */
-    public String getStudySubject() {
-        return studySubject;
+    public Subject getStudySubject() {
+        return subject;
     }
 }
