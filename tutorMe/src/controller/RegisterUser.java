@@ -26,7 +26,7 @@ public class RegisterUser {
     public static int addStudent(User student) throws ClassNotFoundException,SQLException, Exception{
         //Class.forName("com.mysql.jdbc.Driver");
         Connection connection;
-        connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/tutormedb", "root", "");
+        connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/tutormedb", "root", "root");
         createTable();
         
         String query = "INSERT INTO `users`(`userName`, `Password`, `Email`, `phoneNo`, `profileVisiblity`,`Age`, `Location`, `gpa`, `majorSubject`, `Description`, `userStatus`) VALUES ('"+
@@ -54,7 +54,7 @@ public class RegisterUser {
     {
         try{            
         Connection connection;
-        connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/tutormedb", "root", "");
+        connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/tutormedb", "root", "root");
         String createTable ="CREATE TABLE IF NOT EXISTS users(id int NOT NULL AUTO_INCREMENT, userName varchar(255) NOT NULL, Password varchar(255) NOT NULL, Email varchar(255) NOT NULL, phoneNo varchar(255) NOT NULL, profileVisiblity varchar(255) NOT NULL, Age int(20) NOT NULL, Location varchar(255) NOT NULL, gpa double NOT NULL, majorSubject varchar(255) NOT NULL, Description varchar(255) NOT NULL, userStatus varchar(255) NOT NULL, primary key(id))";
         Statement stm2 = connection.createStatement();
         stm2.executeUpdate(createTable);
