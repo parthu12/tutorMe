@@ -11,7 +11,7 @@ import model.Student;
 
 /**
  *
- * @author Muhammad
+ * @author Peggy
  */
 public class profileFrame extends javax.swing.JFrame {
     int id;
@@ -67,6 +67,7 @@ public class profileFrame extends javax.swing.JFrame {
         Clear_btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Complete Profile");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 0, 153));

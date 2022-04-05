@@ -13,7 +13,7 @@ import model.User;
 
 /**
  *
- * @author Muhammad
+ * @author Peggy
  */
 public class RegisterFrame extends javax.swing.JFrame {
 
@@ -54,6 +54,7 @@ public class RegisterFrame extends javax.swing.JFrame {
         loginBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Registration Form");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 0, 153));

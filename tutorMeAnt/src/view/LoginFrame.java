@@ -13,6 +13,11 @@ import javax.swing.JOptionPane;
 import model.Admin;
 
 
+/**
+ *
+ * @author Peggy
+ */
+
 public class LoginFrame extends javax.swing.JFrame {
 
     public LoginFrame() {
@@ -210,7 +215,7 @@ public class LoginFrame extends javax.swing.JFrame {
                     //System.out.println(id+"\n"+Username+" \n"+Useremail+"\n"+Userphone);
                     System.out.println("Tutor Logged in successfully");
                     this.dispose();
-                    new TutorFrame(Username,Useremail,Userphone,UserAge,loc,gpa,major,des).setVisible(true);
+                    new TutorFrame(id,Username,Useremail,Userphone,UserAge,loc,gpa,major,des).setVisible(true);
                 }
                 else{
                     new profileFrame(id,Username,Useremail,Userphone).setVisible(true);

@@ -4,20 +4,31 @@
  */
 package view;
 
+import com.mysql.cj.jdbc.DatabaseMetaData;
 import controller.AddStudent;
+import controller.AdminDAO;
+import controller.RatingData;
 import controller.StudentData;
+import database.DBConnectionManager;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
+import javax.swing.table.DefaultTableModel;
+import model.Rating;
+import static view.LoginFrame.loggedIn;
 
 /**
  *
- * @author Muhammad
+ * @author Peggy
  */
 public class StudentFrame extends javax.swing.JFrame {
     int id;
@@ -29,6 +40,8 @@ public class StudentFrame extends javax.swing.JFrame {
     String des;
     String loc;
     String major;
+    String TutorStatus;
+    int tutorId;
 
     /**
      * Creates new form StudentFrame
@@ -69,10 +82,6 @@ public class StudentFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         helpPanelBtn = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        settingPanelBtn = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        schedulePanelBtn = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         prfile_screen = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -94,17 +103,12 @@ public class StudentFrame extends javax.swing.JFrame {
         phone_label = new javax.swing.JLabel();
         JScrollPane = new javax.swing.JScrollPane();
         desc_label = new javax.swing.JTextArea();
-        jPanel4 = new javax.swing.JPanel();
-        ChagePassword = new javax.swing.JButton();
-        tf_change = new javax.swing.JTextField();
-        btnSave = new javax.swing.JButton();
-        cancelBtn = new javax.swing.JButton();
         courses_screen = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         course_main = new javax.swing.JLabel();
-        help_screen = new javax.swing.JPanel();
-        help_main = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        mainHeading = new javax.swing.JLabel();
+        rateBth = new javax.swing.JButton();
         setting_screen = new javax.swing.JPanel();
         setting_main = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
@@ -119,8 +123,28 @@ public class StudentFrame extends javax.swing.JFrame {
         btnSearch = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
+        help_screen = new javax.swing.JPanel();
+        help_main = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel24 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jLabel25 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextArea3 = new javax.swing.JTextArea();
+        jPanel7 = new javax.swing.JPanel();
+        ChagePassword = new javax.swing.JButton();
+        tf_change = new javax.swing.JTextField();
+        btnSave = new javax.swing.JButton();
+        cancelBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Student Portal");
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -252,76 +276,22 @@ public class StudentFrame extends javax.swing.JFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Help");
+        jLabel4.setText("Help/Setting");
 
         javax.swing.GroupLayout helpPanelBtnLayout = new javax.swing.GroupLayout(helpPanelBtn);
         helpPanelBtn.setLayout(helpPanelBtnLayout);
         helpPanelBtnLayout.setHorizontalGroup(
             helpPanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(helpPanelBtnLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                .addGap(27, 27, 27))
         );
         helpPanelBtnLayout.setVerticalGroup(
             helpPanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, helpPanelBtnLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        settingPanelBtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        settingPanelBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                settingPanelBtnMouseClicked(evt);
-            }
-        });
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Setting");
-
-        javax.swing.GroupLayout settingPanelBtnLayout = new javax.swing.GroupLayout(settingPanelBtn);
-        settingPanelBtn.setLayout(settingPanelBtnLayout);
-        settingPanelBtnLayout.setHorizontalGroup(
-            settingPanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(settingPanelBtnLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        settingPanelBtnLayout.setVerticalGroup(
-            settingPanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(settingPanelBtnLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        schedulePanelBtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        schedulePanelBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                schedulePanelBtnMouseClicked(evt);
-            }
-        });
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setText("Schedule");
-
-        javax.swing.GroupLayout schedulePanelBtnLayout = new javax.swing.GroupLayout(schedulePanelBtn);
-        schedulePanelBtn.setLayout(schedulePanelBtnLayout);
-        schedulePanelBtnLayout.setHorizontalGroup(
-            schedulePanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(schedulePanelBtnLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
-        schedulePanelBtnLayout.setVerticalGroup(
-            schedulePanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, schedulePanelBtnLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -333,28 +303,22 @@ public class StudentFrame extends javax.swing.JFrame {
             .addComponent(searchPanelBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(coursePanelBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(helpPanelBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(settingPanelBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(schedulePanelBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(49, 49, 49)
                 .addComponent(profilePanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(26, 26, 26)
                 .addComponent(searchPanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(26, 26, 26)
                 .addComponent(coursePanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(26, 26, 26)
                 .addComponent(helpPanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(settingPanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(schedulePanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 140, 480));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 140, 490));
 
         jTabbedPane1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -433,67 +397,6 @@ public class StudentFrame extends javax.swing.JFrame {
         desc_label.setRows(5);
         JScrollPane.setViewportView(desc_label);
 
-        ChagePassword.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        ChagePassword.setText("Change Password");
-        ChagePassword.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ChagePasswordMouseClicked(evt);
-            }
-        });
-
-        tf_change.setEditable(false);
-        tf_change.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_change.setBorder(null);
-        tf_change.setEnabled(false);
-
-        btnSave.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnSave.setBorder(null);
-        btnSave.setEnabled(false);
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
-            }
-        });
-
-        cancelBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cancelBtn.setBorder(null);
-        cancelBtn.setEnabled(false);
-        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelBtnActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ChagePassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tf_change)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(ChagePassword)
-                .addGap(18, 18, 18)
-                .addComponent(tf_change, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(95, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout prfile_screenLayout = new javax.swing.GroupLayout(prfile_screen);
         prfile_screen.setLayout(prfile_screenLayout);
         prfile_screenLayout.setHorizontalGroup(
@@ -511,65 +414,57 @@ public class StudentFrame extends javax.swing.JFrame {
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(89, 89, 89)
                 .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(prfile_screenLayout.createSequentialGroup()
-                        .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(location_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(major_lable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(gpa_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(name_label, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
-                                .addComponent(email_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(phone_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(age_label, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(48, 48, 48)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(location_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(major_lable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(gpa_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(name_label, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                            .addComponent(email_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(phone_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(age_label, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(281, Short.MAX_VALUE))
             .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         prfile_screenLayout.setVerticalGroup(
             prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(prfile_screenLayout.createSequentialGroup()
-                .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(prfile_screenLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(name_label))
-                        .addGap(18, 18, 18)
-                        .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(email_label))
-                        .addGap(18, 18, 18)
-                        .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(phone_label))
-                        .addGap(20, 20, 20)
-                        .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(age_label))
-                        .addGap(18, 18, 18)
-                        .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel13)
-                            .addComponent(location_label))
-                        .addGap(18, 18, 18)
-                        .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel15)
-                            .addComponent(gpa_label))
-                        .addGap(18, 18, 18)
-                        .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel17)
-                            .addComponent(major_lable)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, prfile_screenLayout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(6, 6, 6)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(name_label))
+                .addGap(18, 18, 18)
+                .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(email_label))
+                .addGap(18, 18, 18)
+                .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(phone_label))
+                .addGap(20, 20, 20)
+                .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(age_label))
+                .addGap(18, 18, 18)
+                .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(location_label))
+                .addGap(18, 18, 18)
+                .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(gpa_label))
+                .addGap(18, 18, 18)
+                .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(major_lable))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel19)
                     .addComponent(JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 78, Short.MAX_VALUE))
+                .addGap(0, 88, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab1", prfile_screen);
@@ -594,57 +489,59 @@ public class StudentFrame extends javax.swing.JFrame {
             .addComponent(course_main, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
         );
 
+        mainHeading.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        mainHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mainHeading.setText("jLabel14");
+
+        rateBth.setText("Give Rating to Tutor");
+        rateBth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rateBthActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(mainHeading, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
+                    .addComponent(rateBth))
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(mainHeading, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addComponent(rateBth)
+                .addContainerGap(287, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout courses_screenLayout = new javax.swing.GroupLayout(courses_screen);
         courses_screen.setLayout(courses_screenLayout);
         courses_screenLayout.setHorizontalGroup(
             courses_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, courses_screenLayout.createSequentialGroup()
+                .addContainerGap(61, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52))
         );
         courses_screenLayout.setVerticalGroup(
             courses_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(courses_screenLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(441, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab3", courses_screen);
-
-        help_main.setBackground(new java.awt.Color(204, 204, 204));
-
-        jLabel16.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("Help");
-
-        javax.swing.GroupLayout help_mainLayout = new javax.swing.GroupLayout(help_main);
-        help_main.setLayout(help_mainLayout);
-        help_mainLayout.setHorizontalGroup(
-            help_mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(help_mainLayout.createSequentialGroup()
-                .addGap(354, 354, 354)
-                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(354, Short.MAX_VALUE))
-        );
-        help_mainLayout.setVerticalGroup(
-            help_mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout help_screenLayout = new javax.swing.GroupLayout(help_screen);
-        help_screen.setLayout(help_screenLayout);
-        help_screenLayout.setHorizontalGroup(
-            help_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(help_main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        help_screenLayout.setVerticalGroup(
-            help_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(help_screenLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(help_main, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(441, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("tab4", help_screen);
 
         setting_main.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -657,7 +554,7 @@ public class StudentFrame extends javax.swing.JFrame {
         setting_mainLayout.setHorizontalGroup(
             setting_mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, setting_mainLayout.createSequentialGroup()
-                .addContainerGap(352, Short.MAX_VALUE)
+                .addContainerGap(356, Short.MAX_VALUE)
                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(352, 352, 352))
         );
@@ -677,7 +574,7 @@ public class StudentFrame extends javax.swing.JFrame {
             .addGroup(setting_screenLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(setting_main, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(441, Short.MAX_VALUE))
+                .addContainerGap(451, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab5", setting_screen);
@@ -713,7 +610,7 @@ public class StudentFrame extends javax.swing.JFrame {
             .addGroup(schedule_screenLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(441, Short.MAX_VALUE))
+                .addContainerGap(451, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab6", schedule_screen);
@@ -752,6 +649,11 @@ public class StudentFrame extends javax.swing.JFrame {
         searchTable.setFocusCycleRoot(true);
         searchTable.setRowHeight(20);
         searchTable.setShowGrid(true);
+        searchTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchTableMouseClicked(evt);
+            }
+        });
         searchScrollPane.setViewportView(searchTable);
 
         btnSearch.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -814,13 +716,202 @@ public class StudentFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
-                .addComponent(searchScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+                .addComponent(searchScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("tab7", search_screen);
 
-        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 810, 510));
+        help_main.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel16.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("Help/Settings");
+
+        javax.swing.GroupLayout help_mainLayout = new javax.swing.GroupLayout(help_main);
+        help_main.setLayout(help_mainLayout);
+        help_mainLayout.setHorizontalGroup(
+            help_mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, help_mainLayout.createSequentialGroup()
+                .addContainerGap(368, Short.MAX_VALUE)
+                .addComponent(jLabel16)
+                .addGap(288, 288, 288))
+        );
+        help_mainLayout.setVerticalGroup(
+            help_mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+        );
+
+        jScrollPane4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel23.setText("Q1 How to create an account?");
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("Click on  Register Now button then provide all the details and then click on Register Now, After then your account is successfully register as a User.");
+        jTextArea1.setWrapStyleWord(true);
+        jTextArea1.setBorder(null);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel24.setText("Q2 How to Create Profile as a student or Tutor?");
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextArea2.setLineWrap(true);
+        jTextArea2.setRows(5);
+        jTextArea2.setText("After register an account as a User, Login your account by providing the username and password that you provide at the time of registeration. After successfully Login you will see a page \"complete your profile\". Here you provide all the deatils to complete your Registration. ");
+        jTextArea2.setWrapStyleWord(true);
+        jTextArea2.setBorder(null);
+        jScrollPane3.setViewportView(jTextArea2);
+
+        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel25.setText("Q3 How to Search Tutor or Request to Tutor?");
+
+        jTextArea3.setColumns(20);
+        jTextArea3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextArea3.setLineWrap(true);
+        jTextArea3.setRows(5);
+        jTextArea3.setText("After successfully Register or Login as a Student. You have seen Search button on the Dashboard. Click on Search Button, then search your Tutor by Name, Location, Major Subject. If Tutor Found you Click on the Tutor Row to Send Request.");
+        jTextArea3.setWrapStyleWord(true);
+        jTextArea3.setBorder(null);
+        jScrollPane5.setViewportView(jTextArea3);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel23)
+                            .addComponent(jLabel24)
+                            .addComponent(jLabel25))
+                        .addGap(0, 197, Short.MAX_VALUE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3)
+                            .addComponent(jScrollPane2)
+                            .addComponent(jScrollPane5))))
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
+        jScrollPane4.setViewportView(jPanel6);
+
+        ChagePassword.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ChagePassword.setText("Change Password");
+        ChagePassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ChagePasswordMouseClicked(evt);
+            }
+        });
+
+        tf_change.setEditable(false);
+        tf_change.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_change.setBorder(null);
+        tf_change.setEnabled(false);
+
+        btnSave.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnSave.setBorder(null);
+        btnSave.setEnabled(false);
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
+        cancelBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cancelBtn.setBorder(null);
+        cancelBtn.setEnabled(false);
+        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ChagePassword, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                    .addComponent(tf_change)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(ChagePassword)
+                .addGap(18, 18, 18)
+                .addComponent(tf_change, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(94, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout help_screenLayout = new javax.swing.GroupLayout(help_screen);
+        help_screen.setLayout(help_screenLayout);
+        help_screenLayout.setHorizontalGroup(
+            help_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(help_main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(help_screenLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        help_screenLayout.setVerticalGroup(
+            help_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(help_screenLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(help_main, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(help_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(help_screenLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(help_screenLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("tab4", help_screen);
+
+        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 810, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -830,7 +921,7 @@ public class StudentFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE)
         );
 
         pack();
@@ -843,7 +934,7 @@ public class StudentFrame extends javax.swing.JFrame {
 
     private void searchPanelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchPanelBtnMouseClicked
         // TODO add your handling code here:
-        jTabbedPane1.setSelectedIndex(5);
+        jTabbedPane1.setSelectedIndex(4);
     }//GEN-LAST:event_searchPanelBtnMouseClicked
 
     private void profile() {                                            
@@ -863,22 +954,81 @@ public class StudentFrame extends javax.swing.JFrame {
     private void coursePanelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_coursePanelBtnMouseClicked
         // TODO add your handling code here:
         jTabbedPane1.setSelectedIndex(1);
+            String Rstatus="Accept";
+            String Username;
+            String Useremail;
+            String Userphone;
+            String UserStatus;
+            
+            loggedIn = true;
+            String query="select * from requests where StuID = '"+id+ "' and RequestStatus = '"+Rstatus+ "'";
+            
+            try(Connection conn = DBConnectionManager.getConnection())
+	{
+            DatabaseMetaData dbm = (DatabaseMetaData) conn.getMetaData();
+            ResultSet tables = dbm.getTables(null, null, "requests", null);
+            if (tables.next()) {
+                // Table exists
+                PreparedStatement ps = conn.prepareStatement(query);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                     //get the details of loggedin User
+                int id= rs.getInt(1);  
+                tutorId= rs.getInt(3);  //  id        
+                Username=rs.getString(4);     //  name         
+                Useremail= rs.getString(5);   //  email 
+                Userphone= rs.getString(6);
+                //int UserAge= rs.getInt(7);//  phoneNo  
+                String loc= rs.getString(8);
+                //double gpa= rs.getDouble(9);
+                String major= rs.getString(7);
+                String R_status= rs.getString(9);
+                String query2="select * from users where id = '"+tutorId+ "'";
+                PreparedStatement ps2 = conn.prepareStatement(query2);            
+                ResultSet rs2 = ps2.executeQuery();
+                if(rs2.next())
+                {
+                     TutorStatus=rs2.getString(2);     //  name         
+                     mainHeading.setText("Your Request has been "+R_status+"ed by the Tutor "+TutorStatus);
+                     rateBth.setVisible(true);
+                }
+               
+
+                } else {
+                    
+                }
+            
+            }
+            else {
+                // Table does not exist
+                mainHeading.setText("Send Request to Tutor");
+                rateBth.setVisible(false);
+               
+
+            }
+            
+            
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentData.class.getName()).log(Level.SEVERE, null, ex);
+             
+             }       
+            
+            
+            
+            
+            
+            
+            
+          
+        
     }//GEN-LAST:event_coursePanelBtnMouseClicked
 
     private void helpPanelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpPanelBtnMouseClicked
         // TODO add your handling code here:
-        jTabbedPane1.setSelectedIndex(2);
+        jTabbedPane1.setSelectedIndex(5);
     }//GEN-LAST:event_helpPanelBtnMouseClicked
-
-    private void settingPanelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingPanelBtnMouseClicked
-        // TODO add your handling code here:
-        jTabbedPane1.setSelectedIndex(3);
-    }//GEN-LAST:event_settingPanelBtnMouseClicked
-
-    private void schedulePanelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_schedulePanelBtnMouseClicked
-        // TODO add your handling code here:
-        jTabbedPane1.setSelectedIndex(4);
-    }//GEN-LAST:event_schedulePanelBtnMouseClicked
 
     private void btnLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogoutMouseClicked
         // TODO add your handling code here:
@@ -922,25 +1072,83 @@ public class StudentFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSearchActionPerformed
 
+    private void searchTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchTableMouseClicked
+        // TODO add your handling code here:
+        int selectedRow=searchTable.getSelectedRow();
+        DefaultTableModel model =(DefaultTableModel)searchTable.getModel();
+        
+        int dialogButton = JOptionPane.showConfirmDialog (null, "Are you sure? You want to send Request to Tutor \n"+"Name: "+
+                model.getValueAt(selectedRow, 1).toString()+"\n"+"Subject: "+
+                        model.getValueAt(selectedRow, 4).toString()+"\n"+"Location/University: "+
+                        model.getValueAt(selectedRow, 3).toString()
+                ,"Warning",JOptionPane.YES_NO_OPTION);
+        if(dialogButton == JOptionPane.YES_OPTION) {
+            String TutorId=model.getValueAt(selectedRow, 0).toString();
+            int TutorId1=Integer.valueOf(TutorId);
+            try {
+                dao.RequestCreated(id,TutorId1,name,email,phoneNo,major,loc);
+                JOptionPane.showMessageDialog(rootPane, "Your Request Successfully Sent");
+            } catch (SQLException ex) {
+                Logger.getLogger(StudentFrame.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                Logger.getLogger(StudentFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        else 
+        {
+            remove(dialogButton);
+        }
+        
+    }//GEN-LAST:event_searchTableMouseClicked
+
+    private void rateBthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rateBthActionPerformed
+        // TODO add your handling code here:
+        new Review(id,tutorId,TutorStatus).setVisible(true);
+        
+    }//GEN-LAST:event_rateBthActionPerformed
+
     private void ChagePasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ChagePasswordMouseClicked
         // TODO add your handling code here:
         tf_change.setEnabled(true);
         Border border = BorderFactory.createLineBorder(Color.DARK_GRAY);// set the border of this component
         tf_change.setBorder(border);
         tf_change.setEditable(true);
-        
+
         btnSave.setText("Save");
         btnSave.setEnabled(true);
         btnSave.setBorder(border);
-        
+
         cancelBtn.setText("Cancel");
         cancelBtn.setEnabled(true);
         cancelBtn.setBorder(border);
     }//GEN-LAST:event_ChagePasswordMouseClicked
 
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        String newPass=tf_change.getText().trim();
+
+        try{
+            if(newPass.length()>5 && !newPass.isEmpty())
+            {
+
+                int addStudent = StudentData.UpdatePassword(id,newPass);
+                if(addStudent>0){
+                    JOptionPane.showMessageDialog(rootPane, "Password Successfully Updated");
+                    Clear();
+                }
+
+            }
+            else{
+                JOptionPane.showMessageDialog(rootPane, "Password length must be greater then 5");
+            }
+        } catch(ClassNotFoundException | SQLException e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnSaveActionPerformed
+
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
         // TODO add your handling code here:
-        
+
         tf_change.setEnabled(false);
         tf_change.setBorder(null);
         tf_change.setEditable(false);
@@ -952,31 +1160,7 @@ public class StudentFrame extends javax.swing.JFrame {
         cancelBtn.setText("");
         cancelBtn.setEnabled(false);
         cancelBtn.setBorder(null);
-
     }//GEN-LAST:event_cancelBtnActionPerformed
-
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
-        String newPass=tf_change.getText().trim();
-        
-        try{
-            if(newPass.length()>5 && !newPass.isEmpty())
-            {
-                
-               int addStudent = StudentData.UpdatePassword(id,newPass);
-               if(addStudent>0){
-               JOptionPane.showMessageDialog(rootPane, "Password Successfully Updated");
-               Clear(); 
-               }
-           
-           }
-            else{
-                JOptionPane.showMessageDialog(rootPane, "Password length must be greater then 5");
-            }
-       } catch(ClassNotFoundException | SQLException e){
-           e.printStackTrace();
-       }       
-    }//GEN-LAST:event_btnSaveActionPerformed
 
     private void Clear()
     {
@@ -993,7 +1177,8 @@ public class StudentFrame extends javax.swing.JFrame {
         cancelBtn.setText("");
         cancelBtn.setEnabled(false);
         cancelBtn.setBorder(null);
-    }    StudentData dao = new StudentData();
+    }    
+    StudentData dao = new StudentData();
     String searchBy = null, searchBookBy = null;
     /**
      * @param args the command line arguments
@@ -1037,10 +1222,11 @@ public class StudentFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -1051,22 +1237,31 @@ public class StudentFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea jTextArea3;
     private javax.swing.JLabel location_label;
+    private javax.swing.JLabel mainHeading;
     private javax.swing.JLabel major_lable;
     private javax.swing.JLabel name_label;
     private javax.swing.JLabel phone_label;
     private javax.swing.JPanel prfile_screen;
     private javax.swing.JPanel profilePanelBtn;
+    private javax.swing.JButton rateBth;
     private javax.swing.JLabel schedlue_main;
-    private javax.swing.JPanel schedulePanelBtn;
     private javax.swing.JPanel schedule_screen;
     private javax.swing.JPanel searchPanelBtn;
     private javax.swing.JScrollPane searchScrollPane;
     private javax.swing.JTable searchTable;
     private javax.swing.JPanel search_screen;
-    private javax.swing.JPanel settingPanelBtn;
     private javax.swing.JPanel setting_main;
     private javax.swing.JPanel setting_screen;
     private javax.swing.JTextField tf_change;

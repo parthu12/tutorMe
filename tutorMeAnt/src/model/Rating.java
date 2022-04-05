@@ -6,8 +6,25 @@ package model;
 
 /**
  *
- * @author lillisnoddy
+ * @author Peggy
  */
 public class Rating {
+    private int rate;
+    private String review;
+    public Rating (int rate,String review){
+        
+        this.rate= rate;
+        this.review= review;
+        
+    }
+
+    public int getRate() {
+        return rate;
+    }
+
+    public String getReview() {
+        return review;
+    }
+    
     
 }
