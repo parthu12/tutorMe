@@ -21,7 +21,7 @@ public class RatingData {
     public static int addRate(Rating rating,int StuID,int tutorID) throws ClassNotFoundException,SQLException, Exception{
         //Class.forName("com.mysql.jdbc.Driver");
         Connection connection;
-        connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/tutormedb", "root", "root123");
+        connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/tutormedb", "root", "");
         createTable();
         
         String query = "INSERT INTO `Ratings`(`reviewBy`, `reviewTo`, `review`, `rating`) VALUES ('"+
