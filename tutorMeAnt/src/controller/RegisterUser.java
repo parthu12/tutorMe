@@ -26,7 +26,7 @@ public class RegisterUser {
     public static int addStudent(User student) throws ClassNotFoundException,SQLException, Exception{
         //Class.forName("com.mysql.jdbc.Driver");
         Connection connection;
-        connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/tutormedb", "root", "");
+        connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/tutormedb", "root", "root123");
         createTable();
         
         String query = "INSERT INTO `users`(`userName`, `Password`, `Email`, `phoneNo`, `profileVisiblity`,`Age`, `Location`, `gpa`, `majorSubject`, `Description`, `userStatus`) VALUES ('"+

@@ -1,0 +1,20 @@
+<school>
+    <Announcement id="1">
+        <course> a</course>
+        <announcement> a</announcement>
+        <duedate> a</duedate>
+        <contactinfo>*</contactinfo>
+    </Announcement>
+    <Announcement id="2">
+        <course> a</course>
+        <announcement> a</announcement>
+        <duedate> a</duedate>
+        <contactinfo>*</contactinfo>
+    </Announcement>
+    <Announcement id="3">
+        <course> b</course>
+        <announcement> b</announcement>
+        <duedate> b</duedate>
+        <contactinfo>*</contactinfo>
+    </Announcement>
+</school>
