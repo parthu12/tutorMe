@@ -122,13 +122,7 @@
                   <Component id="searchPanelBtn" alignment="0" max="32767" attributes="0"/>
                   <Component id="coursePanelBtn" alignment="0" max="32767" attributes="0"/>
                   <Component id="helpPanelBtn" alignment="0" max="32767" attributes="0"/>
-                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="AnnouncementPanelBtn1" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <Component id="AnnouncementPanelBtn1" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -142,14 +136,9 @@
                       <Component id="coursePanelBtn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="helpPanelBtn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="123" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="317" max="32767" attributes="0"/>
-                          <Component id="AnnouncementPanelBtn1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
-                      </Group>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="AnnouncementPanelBtn1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="107" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1564,7 +1553,6 @@
                           </Table>
                         </Property>
                         <Property name="focusCycleRoot" type="boolean" value="true"/>
-                        <Property name="rowHeight" type="int" value="20"/>
                         <Property name="showGrid" type="boolean" value="true"/>
                       </Properties>
                       <Events>
