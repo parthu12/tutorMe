@@ -84,6 +84,7 @@ public class TutorFrame extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         btnLogout = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
+        logoIcon = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         profilePanelBtn = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -120,7 +121,6 @@ public class TutorFrame extends javax.swing.JFrame {
         desc_label = new javax.swing.JTextArea();
         rating_label = new javax.swing.JLabel();
         rate_label = new javax.swing.JLabel();
-        jLabel37 = new javax.swing.JLabel();
         search_screen = new javax.swing.JPanel();
         search_main = new javax.swing.JPanel();
         course_main1 = new javax.swing.JLabel();
@@ -227,24 +227,31 @@ public class TutorFrame extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Tutor Portal   ");
 
+        logoIcon.setIcon(new javax.swing.ImageIcon("/Users/lillisnoddy/Downloads/tutorMe/tutorMeAnt/resources/smallerLogo.png")); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addComponent(logoIcon)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 657, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 620, Short.MAX_VALUE)
                 .addComponent(btnLogout)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnLogout)
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 15, Short.MAX_VALUE)
+                        .addComponent(btnLogout)))
                 .addContainerGap())
-            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(logoIcon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 50));
@@ -530,8 +537,6 @@ public class TutorFrame extends javax.swing.JFrame {
         rate_label.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rate_label.setText("hy");
 
-        jLabel37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/TutorMeLogo(1).png"))); // NOI18N
-
         javax.swing.GroupLayout prfile_screenLayout = new javax.swing.GroupLayout(prfile_screen);
         prfile_screen.setLayout(prfile_screenLayout);
         prfile_screenLayout.setHorizontalGroup(
@@ -557,9 +562,7 @@ public class TutorFrame extends javax.swing.JFrame {
                     .addComponent(email_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(phone_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(age_label, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(85, 85, 85)
-                .addComponent(jLabel37)
-                .addContainerGap())
+                .addGap(291, 291, 291))
             .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, prfile_screenLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -586,38 +589,33 @@ public class TutorFrame extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(email_label))
                 .addGap(18, 18, 18)
+                .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(phone_label))
+                .addGap(18, 18, 18)
+                .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(age_label))
+                .addGap(18, 18, 18)
+                .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(location_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(gpa_label))
+                .addGap(18, 18, 18)
+                .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(major_lable))
+                .addGap(18, 18, 18)
                 .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(prfile_screenLayout.createSequentialGroup()
-                        .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(phone_label))
-                        .addGap(18, 18, 18)
-                        .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(age_label))
-                        .addGap(18, 18, 18)
-                        .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(location_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel15)
-                            .addComponent(gpa_label))
-                        .addGap(18, 18, 18)
-                        .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel17)
-                            .addComponent(major_lable))
-                        .addGap(18, 18, 18)
-                        .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(prfile_screenLayout.createSequentialGroup()
-                                .addComponent(jLabel19)
-                                .addGap(77, 77, 77))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, prfile_screenLayout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(211, 211, 211))))
-                    .addGroup(prfile_screenLayout.createSequentialGroup()
-                        .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(jLabel19)
+                        .addGap(77, 77, 77))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, prfile_screenLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(211, 211, 211))))
         );
 
         jTabbedPane1.addTab("tab1", prfile_screen);
@@ -2019,7 +2017,6 @@ public class TutorFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -2050,6 +2047,7 @@ public class TutorFrame extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JLabel location_label;
+    private javax.swing.JLabel logoIcon;
     private javax.swing.JLabel major_lable;
     private javax.swing.JLabel name_label;
     private javax.swing.JLabel phone_label;
