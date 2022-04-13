@@ -174,7 +174,8 @@ public class StudentData {
         try{            
         Connection connection;
         connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/tutormedb", "root", "");
-        String createTable ="CREATE TABLE IF NOT EXISTS Requests(Rid int NOT NULL AUTO_INCREMENT, StuID int(20) NOT NULL, TutorID int(20) NOT NULL, StuName varchar(255) NOT NULL, StuEmail varchar(255) NOT NULL, StuPhoneNo varchar(255) NOT NULL, majorSubject varchar(255) NOT NULL, StuLocation varchar(30) NOT NULL, RequestStatus varchar(255) NOT NULL, primary key(Rid))";
+        String createTable ="CREATE TABLE IF NOT EXISTS Requests(Rid int NOT NULL AUTO_INCREMENT, StuID int(20) NOT NULL, TutorID int(20) NOT NULL, StuName varchar(255) NOT NULL, StuEmail varchar(255) NOT NULL, StuPhoneNo varchar(255) NOT NULL, majorSubject varchar(255) NOT NULL, StuLocation varchar(30) NOT NULL, RequestStatus varchar(255) NOT NULL, TutorName varchar(255) DEFAULT NULL," +
+                                "TutorMajor varchar(255) DEFAULT NULL, primary key(Rid))";
         Statement stm2 = connection.createStatement();
         stm2.executeUpdate(createTable);
         
