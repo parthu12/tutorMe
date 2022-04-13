@@ -1912,7 +1912,7 @@ public class StudentFrame extends javax.swing.JFrame {
             Connection conn = DBConnectionManager.getConnection();//Establishing connection
             //Statement st = (Statement) conn.createStatement();
             createCourseTable(conn);
-            String sql ="insert into course value (?,?,?,?)";
+            String sql ="insert into course value (?,?,?,?,?)";
             PreparedStatement ptst= conn.prepareStatement(sql);
             ptst.setString(1, addCourseCourse.getText());
             ptst.setString(2, addCourseLocation.getText());
