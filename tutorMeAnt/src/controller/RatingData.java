@@ -5,6 +5,7 @@
 package controller;
 
 
+import database.DBConnectionManager;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -20,8 +21,7 @@ public class RatingData {
     
     public static int addRate(Rating rating,int StuID,int tutorID) throws ClassNotFoundException,SQLException, Exception{
         //Class.forName("com.mysql.jdbc.Driver");
-        Connection connection;
-        connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/tutormedb", "root", "");
+        Connection connection = DBConnectionManager.getConnection();
         createTable();
         
         String query = "INSERT INTO `Ratings`(`reviewBy`, `reviewTo`, `review`, `rating`) VALUES ('"+
@@ -41,8 +41,7 @@ public class RatingData {
     
     public static int UpdateRate(Rating rating,int StuID,int tutorID) throws ClassNotFoundException,SQLException, Exception{
         //Class.forName("com.mysql.jdbc.Driver");
-        Connection connection;
-        connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/tutormedb", "root", "");
+        Connection connection = DBConnectionManager.getConnection();
         
         
         String query = "UPDATE Ratings SET review='" + rating.getReview()+ "', rating= '" +rating.getRate()+ "' WHERE reviewBy='" + StuID+ "' and reviewTo='" + tutorID+ "' ";
@@ -59,8 +58,7 @@ public class RatingData {
     public static void createTable() throws Exception
     {
         try{            
-        Connection connection;
-        connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/tutormedb", "root", "");
+        Connection connection = DBConnectionManager.getConnection();
         String createTable ="CREATE TABLE IF NOT EXISTS Ratings(id int NOT NULL AUTO_INCREMENT, reviewBy varchar(255) NOT NULL, reviewTo varchar(255) NOT NULL, review varchar(255) NOT NULL, rating int(20) NOT NULL, primary key(id))";
         Statement stm2 = connection.createStatement();
         stm2.executeUpdate(createTable);

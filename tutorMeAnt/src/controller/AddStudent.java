@@ -6,6 +6,7 @@ package controller;
 
 
 
+import database.DBConnectionManager;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -20,8 +21,7 @@ public class AddStudent {
     
     public static int addStudent(Student student,int id) throws ClassNotFoundException,SQLException{
         //Class.forName("com.mysql.jdbc.Driver");
-        Connection connection;
-        connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/tutormedb", "root", "");
+        Connection connection = DBConnectionManager.getConnection();
         
         String query = "UPDATE users SET Age='" + student.getAge()+ "', Location= '" + student.getLocation()+ "', gpa= '" + student.getGpa()+ "',  majorSubject= '" + student.getCourse()+ "', Description= '" + student.getDescription()+ "', userStatus= '" + student.getStatus()+ "' WHERE id='" + id+ "' ";
         

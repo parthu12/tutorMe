@@ -174,6 +174,9 @@ public class TutorFrame extends javax.swing.JFrame {
         editCourseTutor = new javax.swing.JTextField();
         editCourseTime = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel37 = new javax.swing.JLabel();
+        editCourseSearchButton = new javax.swing.JButton();
+        editCourseSearch = new javax.swing.JTextField();
         deleteCoursePanel = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -248,8 +251,6 @@ public class TutorFrame extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Tutor Portal   ");
 
-        logoIcon.setIcon(new javax.swing.ImageIcon("/Users/lillisnoddy/Downloads/tutorMe/tutorMeAnt/resources/smallerLogo.png")); // NOI18N
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -269,10 +270,10 @@ public class TutorFrame extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 15, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnLogout)))
                 .addContainerGap())
-            .addComponent(logoIcon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(logoIcon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 50));
@@ -498,7 +499,7 @@ public class TutorFrame extends javax.swing.JFrame {
                 .addComponent(coursePanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(chatPanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 140, 490));
@@ -983,6 +984,15 @@ public class TutorFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel37.setText("Enter Course to edit");
+
+        editCourseSearchButton.setText("Search");
+        editCourseSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editCourseSearchButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout EditCoursePanelLayout = new javax.swing.GroupLayout(EditCoursePanel);
         EditCoursePanel.setLayout(EditCoursePanelLayout);
         EditCoursePanelLayout.setHorizontalGroup(
@@ -992,29 +1002,41 @@ public class TutorFrame extends javax.swing.JFrame {
                     .addGroup(EditCoursePanelLayout.createSequentialGroup()
                         .addGap(61, 61, 61)
                         .addGroup(EditCoursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel31)
-                            .addComponent(jLabel32)
-                            .addComponent(jLabel33))
-                        .addGap(123, 123, 123)
-                        .addGroup(EditCoursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(editCourseCourse)
-                            .addComponent(editCourseLocation)
-                            .addComponent(editCourseTutor)
-                            .addComponent(editCourseTime, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)))
+                            .addGroup(EditCoursePanelLayout.createSequentialGroup()
+                                .addGroup(EditCoursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel31)
+                                    .addComponent(jLabel32)
+                                    .addComponent(jLabel33))
+                                .addGap(123, 123, 123)
+                                .addGroup(EditCoursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(editCourseCourse)
+                                    .addComponent(editCourseLocation)
+                                    .addComponent(editCourseTutor)
+                                    .addComponent(editCourseTime, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)))
+                            .addGroup(EditCoursePanelLayout.createSequentialGroup()
+                                .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(97, 97, 97)
+                                .addComponent(editCourseSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(104, 104, 104)
+                                .addComponent(editCourseSearchButton))))
                     .addGroup(EditCoursePanelLayout.createSequentialGroup()
                         .addGap(143, 143, 143)
                         .addComponent(jButton1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(287, Short.MAX_VALUE))
         );
         EditCoursePanelLayout.setVerticalGroup(
             EditCoursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EditCoursePanelLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(EditCoursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel30)
-                    .addComponent(editCourseCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addGroup(EditCoursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel37)
+                    .addComponent(editCourseSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editCourseSearchButton))
+                .addGap(13, 13, 13)
+                .addGroup(EditCoursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(editCourseCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel30))
+                .addGap(18, 18, 18)
                 .addGroup(EditCoursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel31)
                     .addComponent(editCourseLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1028,7 +1050,7 @@ public class TutorFrame extends javax.swing.JFrame {
                     .addComponent(editCourseTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addComponent(jButton1)
-                .addContainerGap(251, Short.MAX_VALUE))
+                .addContainerGap(247, Short.MAX_VALUE))
         );
 
         courseTabbedPane.addTab("Edit Course", EditCoursePanel);
@@ -1927,7 +1949,7 @@ public class TutorFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/tutormedb", "root", "root123");//Establishing connection
+            Connection conn = DBConnectionManager.getConnection();//Establishing connection
             //Statement st = (Statement) conn.createStatement();
             createCourseTable(conn);
             String sql ="insert into course value (?,?,?,?,?)";
@@ -1953,7 +1975,7 @@ public class TutorFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tutormedb", "root", "root123");//Establishing connection
+            Connection conn = DBConnectionManager.getConnection();//Establishing connection
 
             Statement st= conn.createStatement();
             String sql="select * from course";
@@ -1979,7 +2001,7 @@ public class TutorFrame extends javax.swing.JFrame {
 
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tutormedb", "root", "root123");//Establishing connection
+            Connection conn = DBConnectionManager.getConnection();//Establishing connection
             //Statement st = (Statement) conn.createStatement();
             String sql ="Update course SET location='"+dfname+"',tutor='"+dlname+"',time='"+dspec+"' WHERE course ='"+did+"'";
             PreparedStatement ptst= conn.prepareStatement(sql);
@@ -1988,7 +2010,7 @@ public class TutorFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Data Updated Successfully");
 
             editCourseCourse.setText(""); editCourseLocation.setText("");  editCourseTutor.setText(""); editCourseTime.setText("");
-
+            editCourseSearch.setText("");
         } catch(Exception e)
         {
             JOptionPane.showMessageDialog(null,e);
@@ -2004,7 +2026,7 @@ public class TutorFrame extends javax.swing.JFrame {
         String fid=deleteCourse.getText();
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tutormedb", "root", "root123");//Establishing connection
+            Connection conn = DBConnectionManager.getConnection();//Establishing connection
             Statement st= conn.createStatement();
             String sql="DELETE FROM course WHERE course='"+fid+"'";
             PreparedStatement pstmt=conn.prepareStatement(sql);
@@ -2066,7 +2088,7 @@ public class TutorFrame extends javax.swing.JFrame {
         String fid=assignmentCourse.getText();
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tutormedb", "root", "root123");//Establishing connection
+            Connection conn = DBConnectionManager.getConnection();//Establishing connection
             Statement st= conn.createStatement();
             String sql ="Update course SET flocation='"+path+"'WHERE course ='"+fid+"'";
             //System.out.println("sql::"+sql);
@@ -2087,7 +2109,7 @@ public class TutorFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tutormedb", "root", "root123");//Establishing connection
+            Connection conn = DBConnectionManager.getConnection();//Establishing connection
 
             Statement st= conn.createStatement();
             String sql="select * from course";
@@ -2152,6 +2174,31 @@ public class TutorFrame extends javax.swing.JFrame {
             Logger.getLogger(TutorFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_chatPanelBtnMouseClicked
+
+    private void editCourseSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editCourseSearchButtonActionPerformed
+        // TODO add your handling code here:
+        String search = editCourseSearch.getText();
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DBConnectionManager.getConnection();//Establishing connection
+
+            Statement st= conn.createStatement();
+            String sql="select * from course where course='"+search+"'";
+            PreparedStatement pstmt=conn.prepareStatement(sql);
+            ResultSet rs= pstmt.executeQuery();
+            DefaultTableModel tm=(DefaultTableModel)jTable1.getModel();
+            tm.setRowCount(0);
+            while(rs.next()){
+                editCourseCourse.setText(rs.getString("course"));
+                editCourseLocation.setText(rs.getString("location"));
+                editCourseTutor.setText(rs.getString("tutor"));
+                editCourseTime.setText(rs.getString("time"));
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,e);
+        }
+
+    }//GEN-LAST:event_editCourseSearchButtonActionPerformed
     
     StudentData dao = new StudentData();
     /**
@@ -2233,6 +2280,8 @@ public class TutorFrame extends javax.swing.JFrame {
     private javax.swing.JTextArea desc_label;
     private javax.swing.JTextField editCourseCourse;
     private javax.swing.JTextField editCourseLocation;
+    private javax.swing.JTextField editCourseSearch;
+    private javax.swing.JButton editCourseSearchButton;
     private javax.swing.JTextField editCourseTime;
     private javax.swing.JTextField editCourseTutor;
     private javax.swing.JLabel email_label;
@@ -2271,6 +2320,7 @@ public class TutorFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;

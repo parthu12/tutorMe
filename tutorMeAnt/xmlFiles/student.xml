@@ -17,4 +17,10 @@
         <duedate> b</duedate>
         <contactinfo>*</contactinfo>
     </Announcement>
+    <Announcement id="4">
+        <course> a</course>
+        <announcement> a</announcement>
+        <duedate> a</duedate>
+        <contactinfo>*</contactinfo>
+    </Announcement>
 </school>

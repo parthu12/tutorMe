@@ -83,9 +83,7 @@ public class GetContacts {
     } 
     
     public int tutorInfo(int Rid, String name, String major) throws SQLException {
-      Connection connection;
-        connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/tutormedb", "root", "");
-            
+      Connection connection = DBConnectionManager.getConnection();
         String query = "UPDATE requests SET TutorName='" + name+ "', TutorMajor ='" + major+ "' WHERE Rid='" + Rid+ "' ";
         Statement stm = connection.createStatement();
         int executeUpdate = stm.executeUpdate(query);

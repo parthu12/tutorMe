@@ -13,18 +13,21 @@ import java.util.Date;
  */
 public class Assignment extends Course{
     private File file;
-    private Date due;
+    private String path;
     
+    //getInput file
     private File getFile(){
         return file;
     }
     
-    private Date getDueDate(){
-        return due;
+    //get File path
+    private String getPath(){
+        return path;
     }
     
-    private void setDueDate(Date d) {
-        due = d;
+    //set filepath
+    private void setPath(String d) {
+        path = d;
     }
     
 }

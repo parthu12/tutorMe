@@ -13,24 +13,61 @@ import java.util.ArrayList;
  */
 public class Course {
     private Assignment assignment;
-    private String results;
-    private Resources resources;
+    private String course;
+    private String time;
+    private String tutor;
+    private String location;
     
     
+    
+    //set assignment
     private void setAssignment(Assignment a){
         assignment = a;
     }
     
+    //get assignment
     private Assignment getAssignment(){
         return assignment;
     }
     
-    private void setResults(String r){
-        results = r;
+    //set course
+    private void setCourse(String r){
+        course = r;
     }
     
-    private String getResults(){
-        return results;
+    //get Course
+    private String getCourse(){
+        return course;
+    }
+    
+    //set location
+    private void setlocation(String r){
+        location = r;
+    }
+    
+    //get Course
+    private String getlocation(){
+        return location;
+    }
+    
+    //set tutor
+    private void setTutor(String r){
+        tutor = r;
+    }
+    
+    //get tutor
+    private String getTutor(){
+        return tutor;
+    }
+    
+    //set time
+    private void setTime(String r){
+        time = r;
+    }
+    
+    //get time
+    private String getTime(){
+        return time;
     }
     
     
