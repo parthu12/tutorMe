@@ -2143,6 +2143,8 @@ public class TutorFrame extends javax.swing.JFrame {
 
     private void chatPanelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chatPanelBtnMouseClicked
         // TODO add your handling code here:
+        
+        // I'll add in a check to see if the request database exists
         jTabbedPane1.setSelectedIndex(6);
         try {
             chatTable.setModel(contacts.tutorContacts());
