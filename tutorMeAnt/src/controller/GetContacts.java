@@ -24,19 +24,29 @@ import javax.swing.table.TableModel;
  * @author lillisnoddy
  */
 public class GetContacts {
+    /**
+     * 
+     * @param tutor_id
+     * @return TableModel
+     * @throws SQLException 
+     */
     public TableModel tutorContacts(int tutor_id) throws SQLException{
         String query = "SELECT DISTINCT StuID, StuName, majorSubject FROM requests WHERE RequestStatus = 'Accept' AND TutorID ='"+ tutor_id +"'";
+        
+        // Labels for chat table information
         Vector<String> columns = new Vector<>();
         columns.add("Student ID");
         columns.add("Student Name");
         columns.add("Student Major");
         
+        // Search for student whom the tutor has accepted
         Vector<Vector<String>> conInfo = new Vector<>();
         try(Connection conn = DBConnectionManager.getConnection())
 	{
             PreparedStatement ps = conn.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             
+            // Obtain student information and return in table format
             while(rs != null && rs.next())
             {
                 Vector<String> row = new Vector<>();
@@ -53,19 +63,29 @@ public class GetContacts {
         return new DefaultTableModel(conInfo,columns);
     }
     
+    /**
+     * 
+     * @param student_id
+     * @return TableModel
+     * @throws SQLException 
+     */
     public TableModel studentContacts(int student_id) throws SQLException{
         String query = "SELECT DISTINCT TutorID, TutorName, TutorMajor FROM requests WHERE RequestStatus = 'Accept' And StuID ='"+ student_id +"'";
+        
+        // Labels for chat table information
         Vector<String> columns = new Vector<>();
         columns.add("Tutor ID");
         columns.add("Tutor Name");
         columns.add("Tutor Major");
         
+        // Search for tutors who have accepted the student
          Vector<Vector<String>> conInfo = new Vector<>();
         try(Connection conn = DBConnectionManager.getConnection())
 	{
             PreparedStatement ps = conn.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             
+            // Obtain tutor information and return in table format
             while(rs != null && rs.next())
             {
                 Vector<String> row = new Vector<>();
@@ -83,14 +103,28 @@ public class GetContacts {
     
     } 
     
+    /**
+     * 
+     * @param Rid
+     * @param name
+     * @param major
+     * @return int
+     * @throws SQLException 
+     */
     public int tutorInfo(int Rid, String name, String major) throws SQLException {
       Connection connection = DBConnectionManager.getConnection();
+        
         String query = "UPDATE requests SET TutorName='" + name+ "', TutorMajor ='" + major+ "' WHERE Rid='" + Rid+ "' ";
         Statement stm = connection.createStatement();
         int executeUpdate = stm.executeUpdate(query);
         return executeUpdate;
     } 
     
+    /**
+     * 
+     * @param id
+     * @param userStatus 
+     */
     public static void checkRTable(int id,String userStatus){
         try {
             
@@ -103,7 +137,7 @@ public class GetContacts {
                 Logger.getLogger(GetContacts.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            // Check if the request table is empty
+            // Check if the request table is empty, inform user
             Connection connection;
             connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/tutormedb", "root", "");
             if (userStatus.equals("Tutor")){

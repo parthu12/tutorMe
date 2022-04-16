@@ -81,6 +81,7 @@ public class StudentFrame extends javax.swing.JFrame {
         initComponents();
         profile();
         messagePanel.setVisible(false);
+        mainLabel.setText("Student Portal for " + name);
     }
     private InteractiveAnnouncementTable ist;
     /**
@@ -96,9 +97,8 @@ public class StudentFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         btnLogout = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
-        logoIcon = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
+        mainLabel = new javax.swing.JLabel();
+        logoLabel = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         profilePanelBtn = new javax.swing.JPanel();
         profBtnLabel = new javax.swing.JLabel();
@@ -210,6 +210,13 @@ public class StudentFrame extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jTextArea4 = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jTextArea5 = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         ChagePassword = new javax.swing.JButton();
         tf_change = new javax.swing.JTextField();
@@ -251,39 +258,36 @@ public class StudentFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Student Portal   ");
+        mainLabel.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        mainLabel.setForeground(new java.awt.Color(255, 255, 255));
+        mainLabel.setText("Student Portal   ");
 
-        jLabel35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/smallerLogo(1).png"))); // NOI18N
+        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/smallerLogo(1).png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel35)
+                .addComponent(logoLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(logoIcon)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 583, Short.MAX_VALUE)
+                .addComponent(mainLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
                 .addComponent(btnLogout)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(logoIcon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel35))
+                .addComponent(logoLabel))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnLogout)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(mainLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -1335,10 +1339,40 @@ public class StudentFrame extends javax.swing.JFrame {
         jTextArea3.setBorder(null);
         jScrollPane5.setViewportView(jTextArea3);
 
+        jTextArea4.setColumns(20);
+        jTextArea4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextArea4.setLineWrap(true);
+        jTextArea4.setRows(5);
+        jTextArea4.setText("If you're chat rooms are locked, you must either send a request to a tutor or if you have \nalready sent a request to a tutor, wait for them to either accept or reject your request. \nYour chat room will only open with a tutor who has accepted your request.\nTo send a request, clicked the \"Search\" button and search for tutor profiles, click on their\ninformation and confirm the request.\n");
+        jScrollPane8.setViewportView(jTextArea4);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Q4 How to open chat rooms?");
+
+        jTextArea5.setColumns(20);
+        jTextArea5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTextArea5.setRows(5);
+        jTextArea5.setText("Peggy Mathis: psm0020@uah.edu\n\nJay Weng: jjw0034@uah.edu\n\nParthu Nallapu: pn0015@uah.edu\n\nLilli Snoddy: lgs0008@uah.edu");
+        jScrollPane9.setViewportView(jTextArea5);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("For Futher Help: Contact Us");
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/TutorMeLogo(1).png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(153, 153, 153)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addComponent(jLabel3)
+                .addGap(0, 40, Short.MAX_VALUE))
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1346,14 +1380,16 @@ public class StudentFrame extends javax.swing.JFrame {
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel23)
                             .addComponent(jLabel24)
-                            .addComponent(jLabel25))
-                        .addGap(0, 260, Short.MAX_VALUE))
+                            .addComponent(jLabel25)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane3)
                             .addComponent(jScrollPane2)
-                            .addComponent(jScrollPane5))))
+                            .addComponent(jScrollPane5)))
+                    .addComponent(jScrollPane8))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -1371,7 +1407,19 @@ public class StudentFrame extends javax.swing.JFrame {
                 .addComponent(jLabel25)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(25, 25, 25)))
+                .addGap(15, 15, 15))
         );
 
         jScrollPane4.setViewportView(jPanel6);
@@ -2209,6 +2257,7 @@ public class StudentFrame extends javax.swing.JFrame {
         
         // Check if the request table exists and show student info for those accepted
         contacts.checkRTable(id, "Student");
+        
         try {
             chatTable.setModel(contacts.studentContacts(id));
         } catch (SQLException ex) {
@@ -2359,9 +2408,9 @@ public class StudentFrame extends javax.swing.JFrame {
     private javax.swing.JPanel help_main1;
     private javax.swing.JPanel help_screen;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -2369,6 +2418,7 @@ public class StudentFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -2379,12 +2429,12 @@ public class StudentFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel7;
@@ -2408,15 +2458,20 @@ public class StudentFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
+    private javax.swing.JTextArea jTextArea4;
+    private javax.swing.JTextArea jTextArea5;
     private javax.swing.JLabel location_label;
-    private javax.swing.JLabel logoIcon;
+    private javax.swing.JLabel logoLabel;
     private javax.swing.JLabel mainHeading;
+    private javax.swing.JLabel mainLabel;
     private javax.swing.JLabel major_lable;
     private javax.swing.JScrollPane messageField;
     private javax.swing.JPanel messagePanel;

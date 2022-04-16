@@ -3,22 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controller;
-import model.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-//import model.Message;
 
 /**
  *
@@ -26,10 +20,22 @@ import java.util.logging.Logger;
  */
 public class SaveMessage {
     
+    /**
+     * 
+     * @param sender
+     * @param recipient
+     * @param s_name
+     * @param message
+     * @param r_name
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     * @throws Exception 
+     */
     public void SaveConvo(int sender, int recipient, String s_name, String message, String r_name) throws ClassNotFoundException,SQLException,Exception{
        Connection connection;
        connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/tutormedb", "root", "");
        
+       // Save all message information in the message database
         String query = "INSERT INTO `messages`(`sender(ID)`, `recipient(ID)`, `sender`, `recipient`, `messagetxt`,`date`) VALUES ('"+
                 sender + "','" + recipient + "','"+ s_name + "','"+r_name+"','"+message+"','"+getDate()+"')";
        PreparedStatement saveStmt = connection.prepareStatement(query);
@@ -37,8 +43,13 @@ public class SaveMessage {
        
     }
 
+    /**
+     * 
+     * @throws Exception 
+     */
     public static void createMessageTable() throws Exception
     {
+        // ensure that the message table exists in the database
         try{            
         Connection connection;
         connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/tutormedb", "root", "");
@@ -53,6 +64,10 @@ public class SaveMessage {
         }
     }
     
+    /**
+     * 
+     * @return String
+     */
      public String getDate(){
         DateFormat date = new SimpleDateFormat();
         Date now = Calendar.getInstance().getTime();
@@ -61,10 +76,21 @@ public class SaveMessage {
         return (dateString);
     }
      
+     /**
+      * 
+      * @param sender
+      * @param recipient
+      * @return ResultSet
+      * @throws ClassNotFoundException
+      * @throws SQLException
+      * @throws Exception 
+      */
     public static ResultSet findChats(int sender, int recipient) throws ClassNotFoundException,SQLException,Exception{
             createMessageTable();
             Connection connection;
             connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/tutormedb", "root", "");
+            
+            // Search for previous messages between the sender and recipient, return table of results
             String query = "SELECT `messagetxt`,`sender`,`date` FROM `messages` WHERE (`sender(ID)` = '"+sender+"' AND `recipient(ID)` = +'"+recipient+"') OR"
                     + "(`sender(ID)` = '"+recipient+"' AND `recipient(ID)` = +'"+sender+"')";
             PreparedStatement findConvo = connection.prepareStatement(query);
