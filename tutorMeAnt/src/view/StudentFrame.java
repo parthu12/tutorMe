@@ -101,17 +101,17 @@ public class StudentFrame extends javax.swing.JFrame {
         jLabel35 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         profilePanelBtn = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        profBtnLabel = new javax.swing.JLabel();
         searchPanelBtn = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        searchBtnLabel = new javax.swing.JLabel();
         coursePanelBtn = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        coursesBtnLabel = new javax.swing.JLabel();
         helpPanelBtn = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        helpBtnLabel = new javax.swing.JLabel();
         AnnouncementPanelBtn1 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        announcBtnLabel = new javax.swing.JLabel();
         chatPanelBtn = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        chatBtnLabel = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         prfile_screen = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -298,8 +298,13 @@ public class StudentFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Profile");
+        profBtnLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        profBtnLabel.setText("Profile");
+        profBtnLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                profBtnLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout profilePanelBtnLayout = new javax.swing.GroupLayout(profilePanelBtn);
         profilePanelBtn.setLayout(profilePanelBtnLayout);
@@ -307,14 +312,14 @@ public class StudentFrame extends javax.swing.JFrame {
             profilePanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(profilePanelBtnLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(profBtnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(36, 36, 36))
         );
         profilePanelBtnLayout.setVerticalGroup(
             profilePanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(profilePanelBtnLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                .addComponent(profBtnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -325,8 +330,13 @@ public class StudentFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Search");
+        searchBtnLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        searchBtnLabel.setText("Search");
+        searchBtnLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchBtnLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout searchPanelBtnLayout = new javax.swing.GroupLayout(searchPanelBtn);
         searchPanelBtn.setLayout(searchPanelBtnLayout);
@@ -334,14 +344,14 @@ public class StudentFrame extends javax.swing.JFrame {
             searchPanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(searchPanelBtnLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(searchBtnLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         searchPanelBtnLayout.setVerticalGroup(
             searchPanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelBtnLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                .addComponent(searchBtnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -352,8 +362,13 @@ public class StudentFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Courses");
+        coursesBtnLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        coursesBtnLabel.setText("Courses");
+        coursesBtnLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                coursesBtnLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout coursePanelBtnLayout = new javax.swing.GroupLayout(coursePanelBtn);
         coursePanelBtn.setLayout(coursePanelBtnLayout);
@@ -361,14 +376,14 @@ public class StudentFrame extends javax.swing.JFrame {
             coursePanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(coursePanelBtnLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addComponent(jLabel3)
+                .addComponent(coursesBtnLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         coursePanelBtnLayout.setVerticalGroup(
             coursePanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(coursePanelBtnLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                .addComponent(coursesBtnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -379,8 +394,13 @@ public class StudentFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Help/Setting");
+        helpBtnLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        helpBtnLabel.setText("Help/Setting");
+        helpBtnLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                helpBtnLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout helpPanelBtnLayout = new javax.swing.GroupLayout(helpPanelBtn);
         helpPanelBtn.setLayout(helpPanelBtnLayout);
@@ -388,14 +408,14 @@ public class StudentFrame extends javax.swing.JFrame {
             helpPanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(helpPanelBtnLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                .addComponent(helpBtnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
                 .addGap(27, 27, 27))
         );
         helpPanelBtnLayout.setVerticalGroup(
             helpPanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, helpPanelBtnLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                .addComponent(helpBtnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -406,8 +426,13 @@ public class StudentFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Announcement");
+        announcBtnLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        announcBtnLabel.setText("Announcement");
+        announcBtnLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                announcBtnLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout AnnouncementPanelBtn1Layout = new javax.swing.GroupLayout(AnnouncementPanelBtn1);
         AnnouncementPanelBtn1.setLayout(AnnouncementPanelBtn1Layout);
@@ -415,14 +440,14 @@ public class StudentFrame extends javax.swing.JFrame {
             AnnouncementPanelBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AnnouncementPanelBtn1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(announcBtnLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         AnnouncementPanelBtn1Layout.setVerticalGroup(
             AnnouncementPanelBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AnnouncementPanelBtn1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                .addComponent(announcBtnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -433,9 +458,14 @@ public class StudentFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Chat Rooms");
+        chatBtnLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        chatBtnLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        chatBtnLabel.setText("Chat Rooms");
+        chatBtnLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                chatBtnLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout chatPanelBtnLayout = new javax.swing.GroupLayout(chatPanelBtn);
         chatPanelBtn.setLayout(chatPanelBtnLayout);
@@ -443,14 +473,14 @@ public class StudentFrame extends javax.swing.JFrame {
             chatPanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, chatPanelBtnLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(chatBtnLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
         );
         chatPanelBtnLayout.setVerticalGroup(
             chatPanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(chatPanelBtnLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                .addComponent(chatBtnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2212,6 +2242,38 @@ public class StudentFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_editCourseSearchButtonActionPerformed
 
+    // All btnlabel have mouseClicked function to make transition between panels smoother
+    
+    private void profBtnLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profBtnLabelMouseClicked
+        // TODO add your handling code here:
+        jTabbedPane1.setSelectedIndex(0);
+    }//GEN-LAST:event_profBtnLabelMouseClicked
+
+    private void searchBtnLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchBtnLabelMouseClicked
+        // TODO add your handling code here:
+        jTabbedPane1.setSelectedIndex(4);
+    }//GEN-LAST:event_searchBtnLabelMouseClicked
+
+    private void coursesBtnLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_coursesBtnLabelMouseClicked
+        // TODO add your handling code here:
+        jTabbedPane1.setSelectedIndex(1);
+    }//GEN-LAST:event_coursesBtnLabelMouseClicked
+
+    private void helpBtnLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpBtnLabelMouseClicked
+        // TODO add your handling code here:
+        jTabbedPane1.setSelectedIndex(5);
+    }//GEN-LAST:event_helpBtnLabelMouseClicked
+
+    private void announcBtnLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_announcBtnLabelMouseClicked
+        // TODO add your handling code here:
+        jTabbedPane1.setSelectedIndex(6);
+    }//GEN-LAST:event_announcBtnLabelMouseClicked
+
+    private void chatBtnLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chatBtnLabelMouseClicked
+        // TODO add your handling code here:
+        jTabbedPane1.setSelectedIndex(7);
+    }//GEN-LAST:event_chatBtnLabelMouseClicked
+
     private void Clear()
     {
         // TODO add your handling code here:
@@ -2257,11 +2319,13 @@ public class StudentFrame extends javax.swing.JFrame {
     private javax.swing.JTextField addCourseTime;
     private javax.swing.JTextField addCourseTutor;
     private javax.swing.JLabel age_label;
+    private javax.swing.JLabel announcBtnLabel;
     private javax.swing.JTextField assignmentCourse;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton cancelBtn;
+    private javax.swing.JLabel chatBtnLabel;
     private javax.swing.JPanel chatPanel;
     private javax.swing.JPanel chatPanelBtn;
     private javax.swing.JLabel chatRoomLabel;
@@ -2273,6 +2337,7 @@ public class StudentFrame extends javax.swing.JFrame {
     private javax.swing.JPanel coursePanelBtn;
     private javax.swing.JTabbedPane courseTabbedPane;
     private javax.swing.JLabel course_main;
+    private javax.swing.JLabel coursesBtnLabel;
     private javax.swing.JPanel courses_screen;
     private javax.swing.JPanel dataTablePanel;
     private javax.swing.JButton delete;
@@ -2288,12 +2353,12 @@ public class StudentFrame extends javax.swing.JFrame {
     private javax.swing.JLabel email_label;
     private javax.swing.JEditorPane fileContent;
     private javax.swing.JLabel gpa_label;
+    private javax.swing.JLabel helpBtnLabel;
     private javax.swing.JPanel helpPanelBtn;
     private javax.swing.JPanel help_main;
     private javax.swing.JPanel help_main1;
     private javax.swing.JPanel help_screen;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -2304,7 +2369,6 @@ public class StudentFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -2315,7 +2379,6 @@ public class StudentFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
@@ -2324,9 +2387,6 @@ public class StudentFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -2363,12 +2423,14 @@ public class StudentFrame extends javax.swing.JFrame {
     private javax.swing.JLabel name_label;
     private javax.swing.JLabel phone_label;
     private javax.swing.JPanel prfile_screen;
+    private javax.swing.JLabel profBtnLabel;
     private javax.swing.JPanel profilePanelBtn;
     private javax.swing.JButton rateBth;
     private javax.swing.JButton saveAnnouncement;
     private javax.swing.JLabel schedlue_main;
     private javax.swing.JLabel schedlue_main1;
     private javax.swing.JPanel schedule_screen;
+    private javax.swing.JLabel searchBtnLabel;
     private javax.swing.JPanel searchPanelBtn;
     private javax.swing.JScrollPane searchScrollPane;
     private javax.swing.JTable searchTable;

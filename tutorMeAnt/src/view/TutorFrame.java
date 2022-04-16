@@ -97,19 +97,19 @@ public class TutorFrame extends javax.swing.JFrame {
         jLabel40 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         profilePanelBtn = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        profBtnLabel = new javax.swing.JLabel();
         searchPanelBtn = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        requestsBtnLabel = new javax.swing.JLabel();
         helpPanelBtn = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        helpBtnLabel = new javax.swing.JLabel();
         SchedulePanelBtn = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        scheduleBtnLabel = new javax.swing.JLabel();
         coursePanelBtn = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        coursesBtnLabel = new javax.swing.JLabel();
         AnnouncementPanelBtn1 = new javax.swing.JPanel();
-        jLabel36 = new javax.swing.JLabel();
+        announcBtnLabel = new javax.swing.JLabel();
         chatPanelBtn = new javax.swing.JPanel();
-        jLabel39 = new javax.swing.JLabel();
+        chatBtnLabel = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         prfile_screen = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -295,8 +295,13 @@ public class TutorFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Profile");
+        profBtnLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        profBtnLabel.setText("Profile");
+        profBtnLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                profBtnLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout profilePanelBtnLayout = new javax.swing.GroupLayout(profilePanelBtn);
         profilePanelBtn.setLayout(profilePanelBtnLayout);
@@ -304,14 +309,14 @@ public class TutorFrame extends javax.swing.JFrame {
             profilePanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(profilePanelBtnLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                .addComponent(profBtnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
                 .addGap(36, 36, 36))
         );
         profilePanelBtnLayout.setVerticalGroup(
             profilePanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(profilePanelBtnLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                .addComponent(profBtnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -322,8 +327,13 @@ public class TutorFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Requests");
+        requestsBtnLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        requestsBtnLabel.setText("Requests");
+        requestsBtnLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                requestsBtnLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout searchPanelBtnLayout = new javax.swing.GroupLayout(searchPanelBtn);
         searchPanelBtn.setLayout(searchPanelBtnLayout);
@@ -331,14 +341,14 @@ public class TutorFrame extends javax.swing.JFrame {
             searchPanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(searchPanelBtnLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addComponent(jLabel2)
+                .addComponent(requestsBtnLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         searchPanelBtnLayout.setVerticalGroup(
             searchPanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelBtnLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                .addComponent(requestsBtnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -349,8 +359,13 @@ public class TutorFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Help");
+        helpBtnLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        helpBtnLabel.setText("Help");
+        helpBtnLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                helpBtnLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout helpPanelBtnLayout = new javax.swing.GroupLayout(helpPanelBtn);
         helpPanelBtn.setLayout(helpPanelBtnLayout);
@@ -358,14 +373,14 @@ public class TutorFrame extends javax.swing.JFrame {
             helpPanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(helpPanelBtnLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(helpBtnLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         helpPanelBtnLayout.setVerticalGroup(
             helpPanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, helpPanelBtnLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                .addComponent(helpBtnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -377,8 +392,13 @@ public class TutorFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Schedule");
+        scheduleBtnLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        scheduleBtnLabel.setText("Schedule");
+        scheduleBtnLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                scheduleBtnLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout SchedulePanelBtnLayout = new javax.swing.GroupLayout(SchedulePanelBtn);
         SchedulePanelBtn.setLayout(SchedulePanelBtnLayout);
@@ -386,14 +406,14 @@ public class TutorFrame extends javax.swing.JFrame {
             SchedulePanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SchedulePanelBtnLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addComponent(jLabel5)
+                .addComponent(scheduleBtnLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         SchedulePanelBtnLayout.setVerticalGroup(
             SchedulePanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SchedulePanelBtnLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                .addComponent(scheduleBtnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -404,8 +424,13 @@ public class TutorFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setText("Courses");
+        coursesBtnLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        coursesBtnLabel.setText("Courses");
+        coursesBtnLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                coursesBtnLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout coursePanelBtnLayout = new javax.swing.GroupLayout(coursePanelBtn);
         coursePanelBtn.setLayout(coursePanelBtnLayout);
@@ -413,14 +438,14 @@ public class TutorFrame extends javax.swing.JFrame {
             coursePanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, coursePanelBtnLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(coursesBtnLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31))
         );
         coursePanelBtnLayout.setVerticalGroup(
             coursePanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(coursePanelBtnLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                .addComponent(coursesBtnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -431,8 +456,13 @@ public class TutorFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel36.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel36.setText("Announcement");
+        announcBtnLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        announcBtnLabel.setText("Announcement");
+        announcBtnLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                announcBtnLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout AnnouncementPanelBtn1Layout = new javax.swing.GroupLayout(AnnouncementPanelBtn1);
         AnnouncementPanelBtn1.setLayout(AnnouncementPanelBtn1Layout);
@@ -440,14 +470,14 @@ public class TutorFrame extends javax.swing.JFrame {
             AnnouncementPanelBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AnnouncementPanelBtn1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(announcBtnLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         AnnouncementPanelBtn1Layout.setVerticalGroup(
             AnnouncementPanelBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AnnouncementPanelBtn1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel36, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                .addComponent(announcBtnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -458,8 +488,13 @@ public class TutorFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel39.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel39.setText("Chat Rooms");
+        chatBtnLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        chatBtnLabel.setText("Chat Rooms");
+        chatBtnLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                chatBtnLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout chatPanelBtnLayout = new javax.swing.GroupLayout(chatPanelBtn);
         chatPanelBtn.setLayout(chatPanelBtnLayout);
@@ -467,14 +502,14 @@ public class TutorFrame extends javax.swing.JFrame {
             chatPanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, chatPanelBtnLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(chatBtnLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );
         chatPanelBtnLayout.setVerticalGroup(
             chatPanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(chatPanelBtnLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel39, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                .addComponent(chatBtnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2222,6 +2257,43 @@ public class TutorFrame extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_editCourseSearchButtonActionPerformed
+
+    // All btnlabel have mouseClicked function to make transition between panels smoother
+    
+    private void profBtnLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profBtnLabelMouseClicked
+        // TODO add your handling code here:
+        jTabbedPane1.setSelectedIndex(0);
+    }//GEN-LAST:event_profBtnLabelMouseClicked
+
+    private void requestsBtnLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requestsBtnLabelMouseClicked
+        // TODO add your handling code here:
+        jTabbedPane1.setSelectedIndex(1);
+    }//GEN-LAST:event_requestsBtnLabelMouseClicked
+
+    private void announcBtnLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_announcBtnLabelMouseClicked
+        // TODO add your handling code here:
+        jTabbedPane1.setSelectedIndex(5);
+    }//GEN-LAST:event_announcBtnLabelMouseClicked
+
+    private void helpBtnLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpBtnLabelMouseClicked
+        // TODO add your handling code here:
+        jTabbedPane1.setSelectedIndex(3);
+    }//GEN-LAST:event_helpBtnLabelMouseClicked
+
+    private void scheduleBtnLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scheduleBtnLabelMouseClicked
+        // TODO add your handling code here:
+        jTabbedPane1.setSelectedIndex(4);
+    }//GEN-LAST:event_scheduleBtnLabelMouseClicked
+
+    private void coursesBtnLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_coursesBtnLabelMouseClicked
+        // TODO add your handling code here:
+        jTabbedPane1.setSelectedIndex(2);
+    }//GEN-LAST:event_coursesBtnLabelMouseClicked
+
+    private void chatBtnLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chatBtnLabelMouseClicked
+        // TODO add your handling code here:
+        jTabbedPane1.setSelectedIndex(6);
+    }//GEN-LAST:event_chatBtnLabelMouseClicked
     
     StudentData dao = new StudentData();
     /**
@@ -2277,12 +2349,14 @@ public class TutorFrame extends javax.swing.JFrame {
     private javax.swing.JTextField addCourseTime;
     private javax.swing.JTextField addCourseTutor;
     private javax.swing.JLabel age_label;
+    private javax.swing.JLabel announcBtnLabel;
     private javax.swing.JTextField assignmentCourse;
     private javax.swing.JButton btnAccept;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnReject;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton cancelBtn;
+    private javax.swing.JLabel chatBtnLabel;
     private javax.swing.JPanel chatMainHeading;
     private javax.swing.JPanel chatPanel;
     private javax.swing.JPanel chatPanelBtn;
@@ -2295,6 +2369,7 @@ public class TutorFrame extends javax.swing.JFrame {
     private javax.swing.JTabbedPane courseTabbedPane;
     private javax.swing.JLabel course_main;
     private javax.swing.JLabel course_main1;
+    private javax.swing.JLabel coursesBtnLabel;
     private javax.swing.JPanel courses_screen;
     private javax.swing.JPanel dataTablePanel;
     private javax.swing.JButton delete;
@@ -2309,11 +2384,11 @@ public class TutorFrame extends javax.swing.JFrame {
     private javax.swing.JTextField editCourseTutor;
     private javax.swing.JLabel email_label;
     private javax.swing.JLabel gpa_label;
+    private javax.swing.JLabel helpBtnLabel;
     private javax.swing.JPanel helpPanelBtn;
     private javax.swing.JPanel help_main;
     private javax.swing.JPanel help_screen;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -2324,7 +2399,6 @@ public class TutorFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -2342,15 +2416,10 @@ public class TutorFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -2384,13 +2453,16 @@ public class TutorFrame extends javax.swing.JFrame {
     private javax.swing.JLabel name_label;
     private javax.swing.JLabel phone_label;
     private javax.swing.JPanel prfile_screen;
+    private javax.swing.JLabel profBtnLabel;
     private javax.swing.JPanel profilePanelBtn;
     private javax.swing.JLabel rate_label;
     private javax.swing.JLabel rating_label;
     private javax.swing.JPanel requestBlock;
+    private javax.swing.JLabel requestsBtnLabel;
     private javax.swing.JButton saveAnnouncement;
     private javax.swing.JLabel schedlue_main;
     private javax.swing.JLabel schedlue_main1;
+    private javax.swing.JLabel scheduleBtnLabel;
     private javax.swing.JPanel schedule_screen;
     private javax.swing.JPanel searchPanelBtn;
     private javax.swing.JPanel search_main;
