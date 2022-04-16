@@ -19,7 +19,7 @@ public class DBConnectionManager {
 		
 		Connection conn = null;
 		try {
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tutormedb", "root", "t3llN0L135");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tutormedb", "root", "");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

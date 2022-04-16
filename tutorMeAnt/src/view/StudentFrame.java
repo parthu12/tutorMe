@@ -2239,15 +2239,22 @@ public class StudentFrame extends javax.swing.JFrame {
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
 
         String message = commentText.getText();
-        try {
-            chat.SaveConvo(id, r_id,name, message, recipient);
-        } catch (SQLException ex) {
-            Logger.getLogger(TutorFrame.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception ex) {
-            Logger.getLogger(TutorFrame.class.getName()).log(Level.SEVERE, null, ex);
+        
+        // Make sure there is not an apostrophe in message to avoid error
+        if (message.contains("'")){
+            JOptionPane.showMessageDialog(null, "Please do not use an apostrophe(') in your message to ensure it is saved properly", "Warning",0);
+        } else {
+            try {
+                chat.SaveConvo(id, r_id,name, message, recipient);
+            } catch (SQLException ex) {
+                Logger.getLogger(StudentFrame.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                Logger.getLogger(StudentFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            viewText.append(name + ": "+message + " ---" + chat.getDate() + "\n");
+            commentText.setText("");
         }
-        viewText.append(name + ": "+message + " ---" + chat.getDate() + "\n");
-        commentText.setText("");
+        
     }//GEN-LAST:event_sendButtonActionPerformed
 
     private void chatPanelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chatPanelBtnMouseClicked
