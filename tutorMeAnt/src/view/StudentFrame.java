@@ -9,6 +9,7 @@ import controller.AddStudent;
 import controller.AdminDAO;
 import controller.GetContacts;
 import controller.RatingData;
+import controller.SaveMessage;
 import controller.StudentData;
 import database.DBConnectionManager;
 import java.awt.BorderLayout;
@@ -56,7 +57,13 @@ public class StudentFrame extends javax.swing.JFrame {
     File infile;
     String selectedFile;
     
+    String message;
+    String date;
+    String idString;
+    String recipient;
+    int r_id;
     GetContacts contacts = new GetContacts();
+    SaveMessage chat = new SaveMessage();
 
     /**
      * Creates new form StudentFrame
@@ -224,9 +231,9 @@ public class StudentFrame extends javax.swing.JFrame {
         messageField = new javax.swing.JScrollPane();
         commentText = new javax.swing.JTextArea();
         sendButton = new javax.swing.JButton();
-        refreshButton = new javax.swing.JButton();
         help_main1 = new javax.swing.JPanel();
         chatTitle = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Student Portal");
@@ -622,7 +629,7 @@ public class StudentFrame extends javax.swing.JFrame {
                 .addGroup(prfile_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel19)
                     .addComponent(JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 692, Short.MAX_VALUE))
+                .addGap(0, 699, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab1", prfile_screen);
@@ -640,7 +647,7 @@ public class StudentFrame extends javax.swing.JFrame {
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addGap(352, 352, 352)
                 .addComponent(course_main, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(356, Short.MAX_VALUE))
+                .addContainerGap(361, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1044,19 +1051,19 @@ public class StudentFrame extends javax.swing.JFrame {
                 .addGroup(courses_screenLayout.createSequentialGroup()
                     .addGap(190, 190, 190)
                     .addComponent(courseTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(63, Short.MAX_VALUE)))
+                    .addContainerGap(68, Short.MAX_VALUE)))
         );
         courses_screenLayout.setVerticalGroup(
             courses_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(courses_screenLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1057, Short.MAX_VALUE))
+                .addContainerGap(1064, Short.MAX_VALUE))
             .addGroup(courses_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(courses_screenLayout.createSequentialGroup()
                     .addGap(48, 48, 48)
                     .addComponent(courseTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(481, Short.MAX_VALUE)))
+                    .addContainerGap(488, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("tab3", courses_screen);
@@ -1072,7 +1079,7 @@ public class StudentFrame extends javax.swing.JFrame {
         setting_mainLayout.setHorizontalGroup(
             setting_mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, setting_mainLayout.createSequentialGroup()
-                .addContainerGap(356, Short.MAX_VALUE)
+                .addContainerGap(361, Short.MAX_VALUE)
                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(352, 352, 352))
         );
@@ -1092,7 +1099,7 @@ public class StudentFrame extends javax.swing.JFrame {
             .addGroup(setting_screenLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(setting_main, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1057, Short.MAX_VALUE))
+                .addContainerGap(1064, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab5", setting_screen);
@@ -1110,7 +1117,7 @@ public class StudentFrame extends javax.swing.JFrame {
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addGap(350, 350, 350)
                 .addComponent(schedlue_main, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(346, Short.MAX_VALUE))
+                .addContainerGap(351, Short.MAX_VALUE))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1128,7 +1135,7 @@ public class StudentFrame extends javax.swing.JFrame {
             .addGroup(schedule_screenLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1057, Short.MAX_VALUE))
+                .addContainerGap(1064, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab6", schedule_screen);
@@ -1209,7 +1216,7 @@ public class StudentFrame extends javax.swing.JFrame {
             .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(search_screenLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(searchScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 775, Short.MAX_VALUE)
+                .addComponent(searchScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 792, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(search_screenLayout.createSequentialGroup()
                 .addGap(69, 69, 69)
@@ -1233,7 +1240,7 @@ public class StudentFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
-                .addComponent(searchScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 955, Short.MAX_VALUE)
+                .addComponent(searchScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 962, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1250,7 +1257,7 @@ public class StudentFrame extends javax.swing.JFrame {
         help_mainLayout.setHorizontalGroup(
             help_mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, help_mainLayout.createSequentialGroup()
-                .addContainerGap(368, Short.MAX_VALUE)
+                .addContainerGap(374, Short.MAX_VALUE)
                 .addComponent(jLabel16)
                 .addGap(288, 288, 288))
         );
@@ -1310,7 +1317,7 @@ public class StudentFrame extends javax.swing.JFrame {
                             .addComponent(jLabel23)
                             .addComponent(jLabel24)
                             .addComponent(jLabel25))
-                        .addGap(0, 197, Short.MAX_VALUE))
+                        .addGap(0, 260, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1487,19 +1494,19 @@ public class StudentFrame extends javax.swing.JFrame {
                 .addGroup(Announcements_screenLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(dataTablePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(296, Short.MAX_VALUE)))
+                    .addContainerGap(307, Short.MAX_VALUE)))
         );
         Announcements_screenLayout.setVerticalGroup(
             Announcements_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Announcements_screenLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(974, Short.MAX_VALUE))
+                .addContainerGap(981, Short.MAX_VALUE))
             .addGroup(Announcements_screenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(Announcements_screenLayout.createSequentialGroup()
                     .addGap(236, 236, 236)
                     .addComponent(dataTablePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(852, Short.MAX_VALUE)))
+                    .addContainerGap(859, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("tab6", Announcements_screen);
@@ -1536,10 +1543,12 @@ public class StudentFrame extends javax.swing.JFrame {
         chatRoomLabel.setText("Chat Room");
 
         viewText.setColumns(20);
+        viewText.setLineWrap(true);
         viewText.setRows(5);
         viewField.setViewportView(viewText);
 
         commentText.setColumns(20);
+        commentText.setLineWrap(true);
         commentText.setRows(5);
         messageField.setViewportView(commentText);
 
@@ -1550,49 +1559,42 @@ public class StudentFrame extends javax.swing.JFrame {
             }
         });
 
-        refreshButton.setText("Refresh chatroom");
-        refreshButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout messagePanelLayout = new javax.swing.GroupLayout(messagePanel);
         messagePanel.setLayout(messagePanelLayout);
         messagePanelLayout.setHorizontalGroup(
             messagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(messagePanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(messagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(messagePanelLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, messagePanelLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(chatRoomLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(refreshButton)
-                        .addGap(25, 25, 25))
+                        .addGap(622, 622, 622))
                     .addGroup(messagePanelLayout.createSequentialGroup()
-                        .addGroup(messagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(viewField, javax.swing.GroupLayout.PREFERRED_SIZE, 691, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addGroup(messagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(viewField, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(messagePanelLayout.createSequentialGroup()
-                                .addComponent(messageField, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(sendButton)
-                                .addGap(4, 4, 4)))
-                        .addContainerGap(69, Short.MAX_VALUE))))
+                                .addComponent(messageField, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(sendButton)))
+                        .addGap(0, 19, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         messagePanelLayout.setVerticalGroup(
             messagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(messagePanelLayout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addGroup(messagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chatRoomLabel)
-                    .addComponent(refreshButton))
+                .addComponent(chatRoomLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(viewField, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(viewField, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(messagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sendButton)
-                    .addComponent(messageField, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(messagePanelLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(sendButton))
+                    .addGroup(messagePanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(messageField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         help_main1.setBackground(new java.awt.Color(204, 204, 204));
@@ -1615,6 +1617,9 @@ public class StudentFrame extends javax.swing.JFrame {
             .addComponent(chatTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
         );
 
+        jLabel36.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jLabel36.setText("Attention: Please do not use any apostrophes(') in your messages to ensure it is properly saved");
+
         javax.swing.GroupLayout chatPanelLayout = new javax.swing.GroupLayout(chatPanel);
         chatPanel.setLayout(chatPanelLayout);
         chatPanelLayout.setHorizontalGroup(
@@ -1625,23 +1630,29 @@ public class StudentFrame extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(help_main1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(chatPanelLayout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(chatPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(chatScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 768, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addGroup(chatPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chatScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 762, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(messagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 6, Short.MAX_VALUE)))
+                        .addGap(0, 16, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(chatPanelLayout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 643, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         chatPanelLayout.setVerticalGroup(
             chatPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(chatPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(help_main1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(25, 25, 25)
+                .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(chatScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(messagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(messagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(544, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab7", chatPanel);
@@ -2112,6 +2123,9 @@ public class StudentFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         int selectedRow=chatTable.getSelectedRow();
         DefaultTableModel model =(DefaultTableModel)chatTable.getModel();
+        recipient = model.getValueAt(selectedRow, 1).toString();
+        idString = model.getValueAt(selectedRow, 0).toString();
+        r_id = Integer.valueOf(idString);
 
         int chatButton = JOptionPane.showConfirmDialog (null, "Open chat room with "+
             model.getValueAt(selectedRow, 1).toString() + "?","Confirm",JOptionPane.YES_NO_OPTION);
@@ -2124,6 +2138,20 @@ public class StudentFrame extends javax.swing.JFrame {
             } else {
                 messagePanel.setVisible(true);
             }
+                
+                // Find and show past messages if they exist
+                ResultSet messages;
+                try {
+                    messages = chat.findChats(id,r_id);
+                    while(messages.next()){
+                        viewText.append(messages.getString(2) + ": "+messages.getString(1) + " ---" + messages.getString(3) + "\n");
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(StudentFrame.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception ex) {
+                    Logger.getLogger(StudentFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+           
         } else
         {
             remove(chatButton);
@@ -2132,27 +2160,27 @@ public class StudentFrame extends javax.swing.JFrame {
 
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
 
-       // I'll add more here
         String message = commentText.getText();
-        //viewText.append(message + " ---" + name + " " + chat.getDate() + "\n");
+        try {
+            chat.SaveConvo(id, r_id,name, message, recipient);
+        } catch (SQLException ex) {
+            Logger.getLogger(TutorFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(TutorFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        viewText.append(name + ": "+message + " ---" + chat.getDate() + "\n");
         commentText.setText("");
     }//GEN-LAST:event_sendButtonActionPerformed
-
-    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
-
-         // I'll add more here
-        viewText.setText("");
-        viewText.append("--------History & New Messages--------\n");
-    }//GEN-LAST:event_refreshButtonActionPerformed
 
     private void chatPanelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chatPanelBtnMouseClicked
         // TODO add your handling code here:
         
-        // I'll add in a check to see if the request database exists
         jTabbedPane1.setSelectedIndex(7);
+        
+        // Check if the request table exists and show student info for those accepted
+        contacts.checkRTable(id, "Student");
         try {
             chatTable.setModel(contacts.studentContacts(id));
-            //contacts.studentContacts(id);
         } catch (SQLException ex) {
             Logger.getLogger(StudentFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -2294,6 +2322,7 @@ public class StudentFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -2336,7 +2365,6 @@ public class StudentFrame extends javax.swing.JFrame {
     private javax.swing.JPanel prfile_screen;
     private javax.swing.JPanel profilePanelBtn;
     private javax.swing.JButton rateBth;
-    private javax.swing.JButton refreshButton;
     private javax.swing.JButton saveAnnouncement;
     private javax.swing.JLabel schedlue_main;
     private javax.swing.JLabel schedlue_main1;
