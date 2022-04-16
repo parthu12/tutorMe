@@ -15,6 +15,7 @@ import java.sql.Statement;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -89,5 +90,52 @@ public class GetContacts {
         int executeUpdate = stm.executeUpdate(query);
         return executeUpdate;
     } 
+    
+    public static void checkRTable(int id,String userStatus){
+        try {
+            
+            String rowCount; int rows;
+            // Ensure that the request table exists
+            StudentData data = new StudentData();
+            try {
+                data.createRTable();
+            } catch (Exception ex) {
+                Logger.getLogger(GetContacts.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            // Check if the request table is empty
+            Connection connection;
+            connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/tutormedb", "root", "t3llN0L135");
+            if (userStatus.equals("Tutor")){
+                System.out.println("In the the tutor");
+                String query = "SELECT COUNT(*) FROM `requests` WHERE `TutorID` = '"+id+"' AND `RequestStatus` = 'Accept'";
+                PreparedStatement checkRow = connection.prepareStatement(query);
+                ResultSet rs = checkRow.executeQuery();
+                rs.next();
+                rowCount = rs.getString(1);
+                rows = Integer.valueOf(rowCount);
+                if(rows == 0){
+                    JOptionPane.showMessageDialog(null, "You must accept student requests to open chat rooms", "Empty Chat Room",1);
+                }
+            } 
+            
+            if (userStatus.equals("Student")){
+                System.out.println("In the the studnet");
+                System.out.println("I'm in the checktable");
+                String query = "SELECT COUNT(*) FROM `requests` WHERE `StuID` = '"+id+"' AND `RequestStatus` = 'Accept'";
+                PreparedStatement checkRow = connection.prepareStatement(query);
+                ResultSet rs = checkRow.executeQuery();
+                rs.next();
+                rowCount = rs.getString(1);
+                rows = Integer.valueOf(rowCount);
+                if(rows == 0){
+                JOptionPane.showMessageDialog(null, "You must be accepted by a tutor to open chat rooms", "Empty Chat Room",1);
+                }
+            } 
+        } catch (SQLException ex) {
+            Logger.getLogger(GetContacts.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
                  
 }
