@@ -24,8 +24,8 @@ import javax.swing.table.TableModel;
  * @author lillisnoddy
  */
 public class GetContacts {
-    public TableModel tutorContacts() throws SQLException{
-        String query = "SELECT DISTINCT StuID, StuName, majorSubject FROM requests WHERE RequestStatus = 'Accept'";
+    public TableModel tutorContacts(int tutor_id) throws SQLException{
+        String query = "SELECT DISTINCT StuID, StuName, majorSubject FROM requests WHERE RequestStatus = 'Accept' AND TutorID ='"+ tutor_id +"'";
         Vector<String> columns = new Vector<>();
         columns.add("Student ID");
         columns.add("Student Name");
@@ -105,7 +105,7 @@ public class GetContacts {
             
             // Check if the request table is empty
             Connection connection;
-            connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/tutormedb", "root", "t3llN0L135");
+            connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/tutormedb", "root", "");
             if (userStatus.equals("Tutor")){
                 System.out.println("In the the tutor");
                 String query = "SELECT COUNT(*) FROM `requests` WHERE `TutorID` = '"+id+"' AND `RequestStatus` = 'Accept'";

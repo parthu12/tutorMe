@@ -31,7 +31,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
-import model.Message;
 import model.Rating;
 import static view.LoginFrame.loggedIn;
 import view.announcement.CreateXml;
@@ -58,7 +57,6 @@ public class StudentFrame extends javax.swing.JFrame {
     String selectedFile;
     
     GetContacts contacts = new GetContacts();
-    Message chat = new Message();
 
     /**
      * Creates new form StudentFrame
@@ -2136,7 +2134,7 @@ public class StudentFrame extends javax.swing.JFrame {
 
        // I'll add more here
         String message = commentText.getText();
-        viewText.append(message + " ---" + name + " " + chat.getDate() + "\n");
+        //viewText.append(message + " ---" + name + " " + chat.getDate() + "\n");
         commentText.setText("");
     }//GEN-LAST:event_sendButtonActionPerformed
 

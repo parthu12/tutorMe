@@ -29,7 +29,7 @@ public class SaveMessage {
     public void SaveConvo(int sender, int recipient, String s_name, String message, String r_name) throws ClassNotFoundException,SQLException,Exception{
        System.out.println("I'm in the SaveConvo function");
        Connection connection;
-       connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/tutormedb", "root", "t3llN0L135");
+       connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/tutormedb", "root", "");
        
         String query = "INSERT INTO `messages`(`sender(ID)`, `recipient(ID)`, `sender`, `recipient`, `messagetxt`,`date`) VALUES ('"+
                 sender + "','" + recipient + "','"+ s_name + "','"+r_name+"','"+message+"','"+getDate()+"')";
@@ -43,7 +43,7 @@ public class SaveMessage {
       System.out.println("Testing the table");
         try{            
         Connection connection;
-        connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/tutormedb", "root", "t3llN0L135");
+        connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/tutormedb", "root", "");
         System.out.println("Making table");
         String query ="CREATE TABLE IF NOT EXISTS `messages`(`sender` varchar(255) NOT NULL,`recipient` varchar(255) DEFAULT NULL,"+
                         "`date` varchar(45) NOT NULL,`chat_id` int NOT NULL AUTO_INCREMENT,`sender(ID)` int NOT NULL,`recipient(ID)` int DEFAULT NULL,`messagetxt` text NOT NULL,PRIMARY KEY (chat_id));"; 
@@ -67,7 +67,7 @@ public class SaveMessage {
     public static ResultSet findChats(int sender, int recipient) throws ClassNotFoundException,SQLException,Exception{
             createMessageTable();
             Connection connection;
-            connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/tutormedb", "root", "t3llN0L135");
+            connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/tutormedb", "root", "");
             String query = "SELECT `messagetxt`,`sender`,`date` FROM `messages` WHERE (`sender(ID)` = '"+sender+"' AND `recipient(ID)` = +'"+recipient+"') OR"
                     + "(`sender(ID)` = '"+recipient+"' AND `recipient(ID)` = +'"+sender+"')";
             PreparedStatement findConvo = connection.prepareStatement(query);
