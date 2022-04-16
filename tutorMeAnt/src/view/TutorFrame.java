@@ -1794,6 +1794,7 @@ public class TutorFrame extends javax.swing.JFrame {
         String accept="Accept";
         try {
             dao.acceptORrejected(Rid,accept);
+            contacts.tutorInfo(Rid,name, major);
             JOptionPane.showMessageDialog(rootPane, "Successfully Updated!");
         } catch (Exception ex) {
             Logger.getLogger(TutorFrame.class.getName()).log(Level.SEVERE, null, ex);
@@ -1806,6 +1807,7 @@ public class TutorFrame extends javax.swing.JFrame {
         String reject="Reject";
         try {
             dao.acceptORrejected(Rid,reject);
+            contacts.tutorInfo(Rid,name, major);
             JOptionPane.showMessageDialog(rootPane, "Successfully Updated!");
         } catch (Exception ex) {
             Logger.getLogger(TutorFrame.class.getName()).log(Level.SEVERE, null, ex);

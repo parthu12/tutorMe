@@ -27,7 +27,6 @@ import java.util.logging.Logger;
 public class SaveMessage {
     
     public void SaveConvo(int sender, int recipient, String s_name, String message, String r_name) throws ClassNotFoundException,SQLException,Exception{
-       System.out.println("I'm in the SaveConvo function");
        Connection connection;
        connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/tutormedb", "root", "");
        
@@ -40,11 +39,9 @@ public class SaveMessage {
 
     public static void createMessageTable() throws Exception
     {
-      System.out.println("Testing the table");
         try{            
         Connection connection;
         connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/tutormedb", "root", "");
-        System.out.println("Making table");
         String query ="CREATE TABLE IF NOT EXISTS `messages`(`sender` varchar(255) NOT NULL,`recipient` varchar(255) DEFAULT NULL,"+
                         "`date` varchar(45) NOT NULL,`chat_id` int NOT NULL AUTO_INCREMENT,`sender(ID)` int NOT NULL,`recipient(ID)` int DEFAULT NULL,`messagetxt` text NOT NULL,PRIMARY KEY (chat_id));"; 
         Statement createTable = connection.createStatement();

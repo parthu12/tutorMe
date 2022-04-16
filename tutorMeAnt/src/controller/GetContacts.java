@@ -29,7 +29,7 @@ public class GetContacts {
         Vector<String> columns = new Vector<>();
         columns.add("Student ID");
         columns.add("Student Name");
-        columns.add("Major");
+        columns.add("Student Major");
         
         Vector<Vector<String>> conInfo = new Vector<>();
         try(Connection conn = DBConnectionManager.getConnection())
@@ -56,9 +56,9 @@ public class GetContacts {
     public TableModel studentContacts(int student_id) throws SQLException{
         String query = "SELECT DISTINCT TutorID, TutorName, TutorMajor FROM requests WHERE RequestStatus = 'Accept' And StuID ='"+ student_id +"'";
         Vector<String> columns = new Vector<>();
-        columns.add("Student ID");
-        columns.add("Student Name");
-        columns.add("Major");
+        columns.add("Tutor ID");
+        columns.add("Tutor Name");
+        columns.add("Tutor Major");
         
          Vector<Vector<String>> conInfo = new Vector<>();
         try(Connection conn = DBConnectionManager.getConnection())
@@ -96,7 +96,7 @@ public class GetContacts {
             
             String rowCount; int rows;
             // Ensure that the request table exists
-            StudentData data = new StudentData();
+           StudentData data = new StudentData();
             try {
                 data.createRTable();
             } catch (Exception ex) {
@@ -107,7 +107,6 @@ public class GetContacts {
             Connection connection;
             connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/tutormedb", "root", "");
             if (userStatus.equals("Tutor")){
-                System.out.println("In the the tutor");
                 String query = "SELECT COUNT(*) FROM `requests` WHERE `TutorID` = '"+id+"' AND `RequestStatus` = 'Accept'";
                 PreparedStatement checkRow = connection.prepareStatement(query);
                 ResultSet rs = checkRow.executeQuery();
@@ -120,8 +119,6 @@ public class GetContacts {
             } 
             
             if (userStatus.equals("Student")){
-                System.out.println("In the the studnet");
-                System.out.println("I'm in the checktable");
                 String query = "SELECT COUNT(*) FROM `requests` WHERE `StuID` = '"+id+"' AND `RequestStatus` = 'Accept'";
                 PreparedStatement checkRow = connection.prepareStatement(query);
                 ResultSet rs = checkRow.executeQuery();
