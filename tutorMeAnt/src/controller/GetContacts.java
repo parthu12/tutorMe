@@ -160,7 +160,7 @@ public class GetContacts {
                 rowCount = rs.getString(1);
                 rows = Integer.valueOf(rowCount);
                 if(rows == 0){
-                JOptionPane.showMessageDialog(null, "You must be accepted by a tutor to open chat rooms", "Empty Chat Room",1);
+                JOptionPane.showMessageDialog(null, "Your request must be accepted by a tutor to open chat rooms", "Empty Chat Room",1);
                 }
             } 
         } catch (SQLException ex) {
