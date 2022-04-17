@@ -138,8 +138,8 @@ public class GetContacts {
             }
             
             // Check if the request table is empty, inform user
-            Connection connection;
-            connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/tutormedb", "root", "");
+            
+            Connection connection = DBConnectionManager.getConnection();
             if (userStatus.equals("Tutor")){
                 String query = "SELECT COUNT(*) FROM `requests` WHERE `TutorID` = '"+id+"' AND `RequestStatus` = 'Accept'";
                 PreparedStatement checkRow = connection.prepareStatement(query);

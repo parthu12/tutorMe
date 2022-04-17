@@ -78,7 +78,7 @@ public class TutorFrame extends javax.swing.JFrame {
         initComponents();
         profile();
         messagePanel.setVisible(false);
-        mainLabel.setText("Student Portal for " + name);
+        mainLabel.setText("Tutor Portal for " + name);
     }
 
     /**

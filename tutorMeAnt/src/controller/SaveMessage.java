@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controller;
+import database.DBConnectionManager;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -32,8 +33,7 @@ public class SaveMessage {
      * @throws Exception 
      */
     public void SaveConvo(int sender, int recipient, String s_name, String message, String r_name) throws ClassNotFoundException,SQLException,Exception{
-       Connection connection;
-       connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/tutormedb", "root", "");
+       Connection connection = DBConnectionManager.getConnection();
        
        // Save all message information in the message database
         String query = "INSERT INTO `messages`(`sender(ID)`, `recipient(ID)`, `sender`, `recipient`, `messagetxt`,`date`) VALUES ('"+
@@ -51,8 +51,7 @@ public class SaveMessage {
     {
         // ensure that the message table exists in the database
         try{            
-        Connection connection;
-        connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/tutormedb", "root", "");
+        Connection connection = DBConnectionManager.getConnection();
         String query ="CREATE TABLE IF NOT EXISTS `messages`(`sender` varchar(255) NOT NULL,`recipient` varchar(255) DEFAULT NULL,"+
                         "`date` varchar(45) NOT NULL,`chat_id` int NOT NULL AUTO_INCREMENT,`sender(ID)` int NOT NULL,`recipient(ID)` int DEFAULT NULL,`messagetxt` text NOT NULL,PRIMARY KEY (chat_id));"; 
         Statement createTable = connection.createStatement();
@@ -87,8 +86,7 @@ public class SaveMessage {
       */
     public static ResultSet findChats(int sender, int recipient) throws ClassNotFoundException,SQLException,Exception{
             createMessageTable();
-            Connection connection;
-            connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/tutormedb", "root", "");
+            Connection connection = DBConnectionManager.getConnection();
             
             // Search for previous messages between the sender and recipient, return table of results
             String query = "SELECT `messagetxt`,`sender`,`date` FROM `messages` WHERE (`sender(ID)` = '"+sender+"' AND `recipient(ID)` = +'"+recipient+"') OR"
