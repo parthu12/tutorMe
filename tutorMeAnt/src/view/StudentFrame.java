@@ -1840,16 +1840,7 @@ public class StudentFrame extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(StudentData.class.getName()).log(Level.SEVERE, null, ex);
              
-             }       
-            
-            
-            
-            
-            
-            
-            
-          
-        
+             }   
     }//GEN-LAST:event_coursePanelBtnMouseClicked
 
     private void helpPanelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpPanelBtnMouseClicked
@@ -2262,7 +2253,6 @@ public class StudentFrame extends javax.swing.JFrame {
 
     private void chatPanelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chatPanelBtnMouseClicked
         // TODO add your handling code here:
-        
         jTabbedPane1.setSelectedIndex(7);
         
         // Check if the request table exists and show student info for those accepted
@@ -2315,7 +2305,63 @@ public class StudentFrame extends javax.swing.JFrame {
 
     private void coursesBtnLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_coursesBtnLabelMouseClicked
         // TODO add your handling code here:
+        // TODO add your handling code here:
         jTabbedPane1.setSelectedIndex(1);
+            String Rstatus="Accept";
+            String Username;
+            String Useremail;
+            String Userphone;
+            String UserStatus;
+            
+            loggedIn = true;
+            String query="select * from requests where StuID = '"+id+ "' and RequestStatus = '"+Rstatus+ "'";
+            
+            try(Connection conn = DBConnectionManager.getConnection())
+	{
+            DatabaseMetaData dbm = (DatabaseMetaData) conn.getMetaData();
+            ResultSet tables = dbm.getTables(null, null, "requests", null);
+            if (tables.next()) {
+                // Table exists
+                PreparedStatement ps = conn.prepareStatement(query);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                     //get the details of loggedin User
+                int id= rs.getInt(1);  
+                tutorId= rs.getInt(3);  //  id        
+                Username=rs.getString(4);     //  name         
+                Useremail= rs.getString(5);   //  email 
+                Userphone= rs.getString(6);
+                //int UserAge= rs.getInt(7);//  phoneNo  
+                String loc= rs.getString(8);
+                //double gpa= rs.getDouble(9);
+                String major= rs.getString(7);
+                String R_status= rs.getString(9);
+                String query2="select * from users where id = '"+tutorId+ "'";
+                PreparedStatement ps2 = conn.prepareStatement(query2);            
+                ResultSet rs2 = ps2.executeQuery();
+                if(rs2.next())
+                {
+                     TutorStatus=rs2.getString(2);     //  name         
+                     mainHeading.setText("Your Request has been "+R_status+"ed by the Tutor "+TutorStatus);
+                     rateBth.setVisible(true);
+                }
+               
+
+                } else {
+                    
+                }
+            
+            }
+            else {
+                // Table does not exist
+                mainHeading.setText("Send Request to Tutor");
+                rateBth.setVisible(false);
+           }
+         
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentData.class.getName()).log(Level.SEVERE, null, ex);
+             
+             }
     }//GEN-LAST:event_coursesBtnLabelMouseClicked
 
     private void helpBtnLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpBtnLabelMouseClicked
@@ -2326,11 +2372,22 @@ public class StudentFrame extends javax.swing.JFrame {
     private void announcBtnLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_announcBtnLabelMouseClicked
         // TODO add your handling code here:
         jTabbedPane1.setSelectedIndex(6);
+        ist = new InteractiveAnnouncementTable();
+        dataTablePanel.add(ist, BorderLayout.CENTER);
     }//GEN-LAST:event_announcBtnLabelMouseClicked
 
     private void chatBtnLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chatBtnLabelMouseClicked
         // TODO add your handling code here:
-        jTabbedPane1.setSelectedIndex(7);
+       jTabbedPane1.setSelectedIndex(7);
+        
+        // Check if the request table exists and show student info for those accepted
+        contacts.checkRTable(id, "Student");
+        
+        try {
+            chatTable.setModel(contacts.studentContacts(id));
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_chatBtnLabelMouseClicked
 
     private void Clear()
